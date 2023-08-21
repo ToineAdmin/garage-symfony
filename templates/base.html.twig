@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+		<meta name="generator" content="Hugo 0.112.5">
+
+		<title></title>
+
+		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+		<meta name="theme-color" content="#712cf9">
+	</head>
+
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+				<a class="navbar-brand" href="">Garage V.PAROT</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="">Services<span class="sr-only"></span>
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Occasions<span class="sr-only"></span>
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Qui sommes nous ?<span class="sr-only"></span>
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Contact<span class="sr-only"></span>
+							</a>
+						</li>
+					</ul>
+					<div class="navbar-item-custom">
+						{% if app.user %}
+							<a href="{{ path('account')}}">Mon compte
+								<small>({{app.user.firstname}})</small>
+							</a>
+							|
+							<a href="{{ path('app_logout')}}">Déconnexion</a>
+						{% else %}
+							<a href="{{ path('app_login')}}" class="btn btn-danger">Connexion</a>
+							
+						{% endif %}
+					</div>
+				</div>
+			</nav>
+		</header>
+		{% block content %}
+		<main>
+
+
+
+
+			<!-- SECTION ACCUEIL !-->
+			<section class="py-5 text-center container" id="home">
+				<div class="row py-lg-5">
+					<div class="col-lg-6 col-md-8 mx-auto">
+						<h1 class="fw-light">Garage V.PARROT</h1>
+						<p class="lead text-body-secondary">Un garage à l'écoute, compétent et disponible !</p>
+						<p>
+							<a href="#occasions" class="btn btn-primary my-2">Nos occasions</a>
+							<a href="#contact" class="btn btn-secondary my-2">Nous contacter</a>
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION SERVICES !-->
+			<section id="services">
+				<div class="container d-flex flex-wrap">
+					<div class="row w-100">
+						<h2 class="text-center mb-5">Nos Services</h2>
+					</div>
+					<div class="row d-flex justify-content-center flex-wrap">
+						<div class="col-md-4 mb-3">
+							<div class="h-100 p-5 rounded-3">
+								<h2></h2>
+								<p></p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+				<section id="occasions">
+					<h2 class="text-center">Nos voitures d'occasions</h2>
+					<div class="container mb-5">
+						<div class="row">
+							<div class="col-md-4">
+								<label for="filter-brand">Marque :</label>
+								<select id="filter-brand" class="form-control">
+									<option value="">Toutes les marques</option>
+									<option value="brand1">Marque 1</option>
+									<option value="brand2">Marque 2</option>
+									<option value="brand3">Marque 3</option>
+
+								</select>
+							</div>
+							<div class="col-md-4">
+								<label for="filter-year">Année :</label>
+								<select id="filter-year" class="form-control">
+									<option value="">Toutes les années</option>
+									<option value="year1">2021</option>
+									<option value="year2">2020</option>
+									<option value="year3">2019</option>
+
+								</select>
+							</div>
+							<div class="col-md-4">
+								<label for="filter-price">Prix :</label>
+								<select id="filter-price" class="form-control">
+									<option value="">Tous les prix</option>
+									<option value="price1">Moins de 10 000 €</option>
+									<option value="price2">10 000 € - 20 000 €</option>
+									<option value="price3">20 000 € - 30 000 €</option>
+
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row occas-container d-flex justify-content-center flex-wrap ">
+							<div class="card">
+								<div id="carouselExample_<?php echo $car->id; ?>" class="carousel slide">
+									<div class="carousel-inner">
+										<div class="carousel-item <?php echo $isActive; ?>">
+											<img src="" class="d-block carousel-image" alt="Car Image">
+										</div>
+									</div>
+									<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Previous</span>
+									</button>
+									<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Next</span>
+									</button>
+								</div>
+								<div class="card-body text-center">
+									<h5 class="card-title">Voiture titre</h5>
+									<p class="card-text">Marque</p>
+									<p class="card-text">prix€</p>
+									<div class="details" id="details" style="display: none;">
+										<div class="table-container">
+											<table class="table">
+												<tbody>
+													<tr>
+														<th scope="col">Kilomètres</th>
+														<td></td>
+													</tr>
+													<tr>
+														<th scope="col">Année de mise en circulation</th>
+														<td></td>
+													</tr>
+													<tr>
+														<th scope="col">Description</th>
+														<td></td>
+													</tr>
+													<tr>
+														<th scope="col">Caractéristiques</th>
+														<td></td>
+													</tr>
+													<tr>
+														<th scope="col">Équipements</th>
+														<td></td>
+													</tr>
+													<!-- Ajoutez plus de paires th/td ici pour plus de détails -->
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<button class="btn btn-primary toggle-button" id="toggle-button" onclick="">En savoir plus</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</section>
+
+
+				<style></style>
+
+			</section>
+
+			<!-- SECTION QUI SOMMES NOUS !-->
+			<section class="container marketing mb-lg-5" id="about">
+				<div class="row">
+					<h2 class="text-center mb-lg-5 mt-lg-5">Qui sommes nous ?</h2>
+					<?php foreach ($usersData as $user) : ?>
+					<div class="col-lg-4 img-container">
+						<svg class="bd-placeholder-img rounded-circle" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveaspectratio="xMidYMid slice" focusable="false">
+							<image href="../<?php echo $user->image_path; ?>" width="200" height="200" preserveaspectratio="xMidYMid slice"/>
+						</svg>
+						<h2 class="fw-normal text-center">Employé</h2>
+						<h5 class="fw-normal text-center">Métier</h5>
+					</div>
+					<?php endforeach ?>
+				</div>
+			</section>
+
+			<!-- SECTION CONTACT !-->
+			<section class="container" id="contact">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="text-center">CONTACT</h2>
+					</div>
+				</div>
+				<div class="row contact-form d-flex justify-content-center">
+					<div class="col-sm-12 col-md-6 ">
+						contact form
+					</div>
+					<div class="col-md-4">
+						<h2>Horaire d'ouvertures</h2>
+					</div>
+				</div>
+			</section>
+
+		</main>
+		{% endblock %}
+
+		<footer class="text-body-secondary py-5"></footer>
+
+		<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
+		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+
+		<script src="{{asset('assets/js/script.js')}}"></script>
+	</body>
+</html>
