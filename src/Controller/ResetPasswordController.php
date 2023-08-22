@@ -44,17 +44,7 @@ class ResetPasswordController extends AbstractController
                 $this->em->flush();
 
                 //Envoie email avec lien de réinitialisation
-                $url=$this->generateUrl('update_password', [
-                    'token' => $reset_password->getToken()
-                ]);
-
-                $content ="Bonjour". ' ' . $user->getFirstname(). ",<br/> Vous avez demandé à réinitialiser votre mot de passe la Boutique. <br/>";
-                $content .= "Merci de bien vouloir cliquer sur le lien suivant : <a href='.$url.'>mettre à jour votre mot de passe</a> ";
-
-                $mail = new Mailjet();
-                $mail->send($user->getEmail(), $user->getFirstname().' '. $user->getLastname(),'Réinitialiser votre mot de passe La Boutique', $content);
-                
-                $this->addFlash('notice', 'Vous allez recevoir dans quelques seconde un email afin de réinitialiser votre mot de passe');
+                // A FAIRE
             }else {
                 $this->addFlash('notice', 'Cette adresse email est inconnue');
             }

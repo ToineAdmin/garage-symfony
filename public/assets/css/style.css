@@ -123,7 +123,7 @@ body{
 
 
 .navbar-item-custom, .navbar-item-custom a{
-    color: white;
+    color: white !important;
 } 
 
 .shopping-cart{
@@ -248,4 +248,35 @@ body{
 .account-item a:hover{
     color:#778ca3;
     text-decoration: none;
+}
+
+/* SERVICES */
+
+.glassmorphic-box {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px; /* Ajustez la hauteur comme nécessaire */
+}
+
+.glassmorphic-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 12px 15px rgba(0, 0, 0, 0.15);
+}
+
+.centered-image {
+    display: block;
+    margin: 0 auto;
+}
+
+.glassmorphic-content {
+    margin-top: 10px;
+    text-align: center;
 }

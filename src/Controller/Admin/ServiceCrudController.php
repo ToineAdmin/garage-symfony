@@ -3,8 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Service;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ServiceCrudController extends AbstractCrudController
 {
@@ -19,6 +20,11 @@ class ServiceCrudController extends AbstractCrudController
         return [
             TextField::new('name', 'Service'),
             TextField::new('description', 'Description'),
+            ImageField::new('image')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads/')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
         ];
     }
 
