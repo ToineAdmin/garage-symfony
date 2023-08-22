@@ -44,6 +44,11 @@ class CarCrudController extends AbstractCrudController
             TextareaField::new('description', 'Description'),
             TextareaField::new('caracteristics', 'Caractéristiques'),
             TextareaField::new('equipements', 'Equipements'),
+            TextField::new('createdby', 'Créé par')
+                ->setFormTypeOptions([
+                'disabled' => true, // Empêche l'édition manuelle
+                'data' => $this->getUser()->getId(), // Utilise le nom de l'utilisateur connecté
+            ]),
         ];
     }
     

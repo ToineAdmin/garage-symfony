@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $Lastname = null;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Car::class)]
+    #[ORM\OneToMany(mappedBy: 'CreatedBy', targetEntity: Car::class)]
     private Collection $cars;
 
     public function __construct()
@@ -183,7 +183,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->cars->contains($car)) {
             $this->cars->add($car);
-            $car->setUserId($this);
+            $car->setCreatedBy($this);
         }
 
         return $this;
@@ -193,11 +193,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->cars->removeElement($car)) {
             // set the owning side to null (unless already changed)
-            if ($car->getUserId() === $this) {
-                $car->setUserId(null);
+            if ($car->getCreatedBy() === $this) {
+                $car->setCreatedBy(null);
             }
         }
 
         return $this;
     }
+
+
 }
