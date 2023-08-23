@@ -279,4 +279,5 @@ body{
 .glassmorphic-content {
     margin-top: 10px;
     text-align: center;
+    cursor:default;
 }

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Car;
 use App\Entity\User;
 use App\Entity\Service;
+use App\Controller\Admin\CarCrudController;
 use App\Controller\Admin\UserCrudController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,8 +21,10 @@ class DashboardController extends AbstractDashboardController
     {
 
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        return $this->redirect($adminUrlGenerator->setController(UserCrudController::class)->generateUrl());
-
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirect($adminUrlGenerator->setController(UserCrudController::class)->generateUrl());
+        }
+        return $this->redirect($adminUrlGenerator->setController(CarCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -32,8 +35,10 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Services', 'fas fa-wrench', Service::class);
+        }
         yield MenuItem::linkToCrud('Voitures', 'fas fa-car', Car::class);
     }
 }

@@ -41,11 +41,11 @@ class Car
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column(type: Types::JSON)]
     private array $image = [];
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'created_by_id', referencedColumnName: 'id' , nullable: false)]
     private ?User $createdBy = null;
 
     public function getId(): ?int
@@ -174,17 +174,6 @@ class Car
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     public function getCreatedBy(): ?User
     {

@@ -24,7 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
-    /**
+    /**F
      * @var string The hashed password
      */
     #[ORM\Column]
@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $Lastname = null;
 
-    #[ORM\OneToMany(mappedBy: 'CreatedBy', targetEntity: Car::class)]
+    #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Car::class)]
     private Collection $cars;
 
     public function __construct()
