@@ -21,9 +21,6 @@ class Car
     private ?string $brand = null;
 
     #[ORM\Column]
-    private ?string $year = null;
-
-    #[ORM\Column]
     private ?float $price = null;
 
     #[ORM\Column(length: 255)]
@@ -47,6 +44,9 @@ class Car
     #[ORM\ManyToOne(inversedBy: 'cars')]
     #[ORM\JoinColumn(name: 'created_by_id', referencedColumnName: 'id' , nullable: false)]
     private ?User $createdBy = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $year = null;
 
     public function getId(): ?int
     {
@@ -77,17 +77,6 @@ class Car
         return $this;
     }
 
-    public function getYear(): ?string
-    {
-        return $this->year;
-    }
-
-    public function setYear(string $year): static
-    {
-        $this->year = $year;
-
-        return $this;
-    }
 
     public function getPrice(): ?int
     {
@@ -183,6 +172,18 @@ class Car
     public function setCreatedBy(?User $createdBy): static
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getYear(): ?\DateTimeInterface
+    {
+        return $this->year;
+    }
+
+    public function setYear(\DateTimeInterface $year): static
+    {
+        $this->year = $year;
 
         return $this;
     }
