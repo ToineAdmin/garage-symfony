@@ -281,3 +281,14 @@ body{
     text-align: center;
     cursor:default;
 }
+
+
+/* OCCASIONS */
+
+.expanded-card {
+    height: auto;
+}
+
+.text-light-bold {
+    font-weight: 600 ; /* Utilisez la valeur appropriée pour un style de gras léger */
+}

@@ -1,0 +1,74 @@
+<div class="row occas-container d-flex justify-content-center flex-wrap">
+	{% for car in cars %}
+		<div class="card">
+			<div id="carouselExample_{{ loop.index }}" class="carousel slide">
+				<div class="carousel-inner">
+					{% for image in car.image %}
+						<div class="carousel-item{% if loop.first %} active{% endif %}">
+							<img src="{{ asset('uploads/' ~ image) }}" class="d-block carousel-image" alt="Car Image">
+						</div>
+					{% endfor %}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample_{{ loop.index }}" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExample_{{ loop.index }}" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+			<div class="card-body text-center">
+				<h5 class="card-title">{{ car.name }}</h5>
+				<p class="card-text">Marque: {{ car.brand }}</p>
+				<p class="card-text text-light-bold">{{ car.price / 100 }}€</p>
+				<div class="details" id="details_{{ loop.index }}" style="display: none;">
+					<div class="table-container">
+						<table class="table">
+							<tbody>
+								<tr>
+									<th scope="col">Kilomètres</th>
+									<td>{{ car.miles }} km</td>
+								</tr>
+								<tr>
+									<th scope="col">Année de mise en circulation</th>
+									<td>{{ car.year|date('Y') }}</td>
+								</tr>
+								<tr>
+									<th scope="col">Description</th>
+									<td class="text-start">{{ car.description }}</td>
+								</tr>
+								<tr>
+									<th scope="col">Caractéristiques</th>
+									<td class="text-start">
+										{% set characteristicsLines = car.caracteristics|split('\n') %}
+										{% for line in characteristicsLines %}
+											{% set parts = line|split(':') %}
+											<span class="text-light-bold">{{ parts[0] }}:</span>
+											{{ parts[1:]|join(':')|raw }}<br>
+										{% endfor %}
+									</td>
+								</tr>
+								<tr>
+									<th scope="col">Équipements</th>
+									<td
+										class="text-start">
+										<!-- Ajoutez la classe text-start ici -->
+										{% set equipmentsLines = car.equipements|split('\n') %}
+										{% for line in equipmentsLines %}
+											{% set parts = line|split(':') %}
+											<span class="text-light-bold">{{ parts[0] }}:</span>
+											{{ parts[1:]|join(':')|raw }}<br>
+										{% endfor %}
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<button class="btn btn-primary toggle-button" id="toggle-button_{{ loop.index }}" onclick="toggleDetails({{ loop.index }})">En savoir plus</button>
+			</div>
+		</div>
+	{% endfor %}
+</div>

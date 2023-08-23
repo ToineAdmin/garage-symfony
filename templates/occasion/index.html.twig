@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos voitures d'occasion - Garage V.PARROT
+{% endblock %}
+
+{% block content %}
+	<section id="occasions">
+		<h2 class="text-center mt-5 mb-5">Nos voitures d'occasions</h2>
+		<div class="container">
+			{% include 'occasion/single_car.html.twig' %}
+		</div>
+	</section>
+{% endblock %}

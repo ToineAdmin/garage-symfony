@@ -15,11 +15,18 @@ menuLinks.forEach(function(link) {
 
 
 // BOUTON EN SAVOIR PLUS CAR_CARD
-function toggleDetails(button, carId) {
-    var card = button.closest('.card');
-    var details = card.querySelector('#details_' + carId);
+function toggleDetails(index) {
+    var details = document.getElementById('details_' + index);
+    var toggleButton = document.getElementById('toggle-button_' + index);
+    var card = toggleButton.closest('.card');
 
-    card.classList.toggle('active');
-    details.style.display = card.classList.contains('active') ? 'block' : 'none';
-    button.textContent = card.classList.contains('active') ? '-' : 'En savoir plus';
+    if (details.style.display === 'none') {
+        details.style.display = 'block';
+        toggleButton.textContent = 'Moins d\'infos';
+        card.classList.add('expanded-card');
+    } else {
+        details.style.display = 'none';
+        toggleButton.textContent = 'En savoir plus';
+        card.classList.remove('expanded-card');
+    }
 }
