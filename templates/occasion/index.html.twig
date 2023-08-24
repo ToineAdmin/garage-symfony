@@ -7,7 +7,17 @@
 	<section id="occasions">
 		<h2 class="text-center mt-5 mb-5">Nos voitures d'occasions</h2>
 		<div class="container">
-			{% include 'occasion/single_car.html.twig' %}
+			<div class="row">
+				<div class="col-md-3">
+					{% include 'occasion/filter.html.twig' with {form : form} only %}
+				</div>
+				<div class="col-md-9">
+					{% include 'occasion/single_car.html.twig' %}
+					<div class="mt-5">
+						{{ knp_pagination_render(cars)}}
+					</div>
+				</div>
+			</div>	
 		</div>
 	</section>
 {% endblock %}

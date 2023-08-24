@@ -23,11 +23,22 @@ class CarCrudController extends AbstractCrudController
     {
         $car = new Car();
         $car->setCreatedBy($this->getUser());
+        $car->setCaracteristics('Longueur :
+Largeur :
+Hauteur :
+Empattement :
+Volume coffre :
+Nombre de porte :');
+        $car->setEquipements('Climatisation :
+Eco consommation :
+Mode sport :
+Bluetooth :');
+
 
         return $car;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         //rajouter le champ user_id prérempli
@@ -35,12 +46,13 @@ class CarCrudController extends AbstractCrudController
             TextField::new('name', 'Titre'),
             SlugField::new('slug')->setTargetFieldName('name')->hideOnIndex(),
             TextField::new('brand', 'Marque'),
+            TextField::new('fuel', 'Carburant'),
             DateField::new('year', 'Date de mise en circulation')
-            ->setFormTypeOption('widget', 'single_text')
-            ->setFormTypeOption('html5', false) // Utilise le format "d-m-Y" (jour-mois-année)
-            ->setFormat('MMMM yyyy') // Format d'affichage mois-année (en utilisant IntlDateFormatter)
-            ->setRequired(false)
-            ->setTimezone('Europe/Paris'), // Définir le fuseau horaire si nécessaire
+                ->setFormTypeOption('widget', 'single_text')
+                ->setFormTypeOption('html5', false) 
+                ->setFormat('MMMM yyyy') // Format d'affichage mois-année (en utilisant IntlDateFormatter)
+                ->setRequired(false)
+                ->setTimezone('Europe/Paris'), // Définir le fuseau horaire si nécessaire
             ImageField::new('image')
                 ->setBasePath('uploads/')
                 ->setFormTypeOptions([
@@ -57,8 +69,6 @@ class CarCrudController extends AbstractCrudController
             TextareaField::new('description', 'Description'),
             TextareaField::new('caracteristics', 'Caractéristiques'),
             TextareaField::new('equipements', 'Equipements')
-
         ];
     }
-    
 }

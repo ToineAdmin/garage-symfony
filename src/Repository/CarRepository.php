@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Car;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
  * @extends ServiceEntityRepository<Car>
@@ -16,9 +19,41 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CarRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Car::class);
+        $this->paginator = $paginator;
+    }
+
+    public function findSearch(SearchData $search) : PaginationInterface
+    {
+        $query = $this->createQueryBuilder('c');
+    
+        if (!empty($search->q)){
+            $query = $query
+                ->andWhere('c.name LIKE :q')
+                ->setParameter('q', "%{$search->q}%");
+        }
+    
+        if(!empty($search->min)){
+            $query = $query
+                ->andWhere('c.price >= :min')
+                ->setParameter('min', $search->min);
+        }
+    
+        if(!empty($search->max)){
+            $query = $query
+                ->andWhere('c.price <= :max')
+                ->setParameter('max', $search->max);
+        }
+        
+        $query = $query->getQuery();
+        return $this->paginator->paginate(
+            $query,
+            1,
+            2
+        );
+
     }
 
 //    /**

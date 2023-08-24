@@ -48,6 +48,9 @@ class Car
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $year = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $fuel = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -184,6 +187,18 @@ class Car
     public function setYear(\DateTimeInterface $year): static
     {
         $this->year = $year;
+
+        return $this;
+    }
+
+    public function getFuel(): ?string
+    {
+        return $this->fuel;
+    }
+
+    public function setFuel(string $fuel): static
+    {
+        $this->fuel = $fuel;
 
         return $this;
     }

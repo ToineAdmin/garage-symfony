@@ -75,9 +75,9 @@
 .card {
     transition: max-height 0.5s ease;
     overflow: hidden;
-    height: 500px;
+    height: 550px;
     min-width: 310px;
-    max-width: 25vw;
+    max-width: 20vw;
     padding: 0;
 }
 
@@ -291,4 +291,11 @@ body{
 
 .text-light-bold {
     font-weight: 600 ; /* Utilisez la valeur appropriée pour un style de gras léger */
+}
+
+.filter{
+    display: block;
+    position: sticky;
+    top:20px;
+
 }

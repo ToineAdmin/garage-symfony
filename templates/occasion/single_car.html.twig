@@ -21,6 +21,7 @@
 			<div class="card-body text-center">
 				<h5 class="card-title">{{ car.name }}</h5>
 				<p class="card-text">Marque: {{ car.brand }}</p>
+				<p class="card-text text-light-bold">{{ car.fuel }}</p>
 				<p class="card-text text-light-bold">{{ car.price / 100 }}€</p>
 				<div class="details" id="details_{{ loop.index }}" style="display: none;">
 					<div class="table-container">

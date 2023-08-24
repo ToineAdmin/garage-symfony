@@ -62,9 +62,9 @@
 					<div class="row py-lg-5">
 						<div class="col-lg-6 col-md-8 mx-auto">
 							<h1 class="fw-light">Garage V.PARROT</h1>
-							<p class="lead text-body-secondary">Un garage à l'écoute, compétent et disponible !</p>
-							<p>
-								<a href="#occasions" class="btn btn-primary my-2">Nos occasions</a>
+							<p class="lead text-body-secondary">
+								Un garage à l'écoute, compétent et disponible !<br/>
+								<a href="{{ path('occasion') }}" class="btn btn-primary my-2">Nos occasions</a>
 								<a href="#contact" class="btn btn-secondary my-2">Nous contacter</a>
 							</p>
 						</div>
@@ -84,108 +84,7 @@
 						</div>
 					</div>
 				</section>
-
-
-					<section id="occasions">
-						<h2 class="text-center">Nos voitures d'occasions</h2>
-						<div class="container mb-5">
-							<div class="row">
-								<div class="col-md-4">
-									<label for="filter-brand">Marque :</label>
-									<select id="filter-brand" class="form-control">
-										<option value="">Toutes les marques</option>
-										<option value="brand1">Marque 1</option>
-										<option value="brand2">Marque 2</option>
-										<option value="brand3">Marque 3</option>
-
-									</select>
-								</div>
-								<div class="col-md-4">
-									<label for="filter-year">Année :</label>
-									<select id="filter-year" class="form-control">
-										<option value="">Toutes les années</option>
-										<option value="year1">2021</option>
-										<option value="year2">2020</option>
-										<option value="year3">2019</option>
-
-									</select>
-								</div>
-								<div class="col-md-4">
-									<label for="filter-price">Prix :</label>
-									<select id="filter-price" class="form-control">
-										<option value="">Tous les prix</option>
-										<option value="price1">Moins de 10 000 €</option>
-										<option value="price2">10 000 € - 20 000 €</option>
-										<option value="price3">20 000 € - 30 000 €</option>
-
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="container">
-							<div class="row occas-container d-flex justify-content-center flex-wrap ">
-								<div class="card">
-									<div id="carouselExample_<?php echo $car->id; ?>" class="carousel slide">
-										<div class="carousel-inner">
-											<div class="carousel-item <?php echo $isActive; ?>">
-												<img src="" class="d-block carousel-image" alt="Car Image">
-											</div>
-										</div>
-										<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Previous</span>
-										</button>
-										<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-											<span class="carousel-control-next-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Next</span>
-										</button>
-									</div>
-									<div class="card-body text-center">
-										<h5 class="card-title">Voiture titre</h5>
-										<p class="card-text">Marque</p>
-										<p class="card-text">prix€</p>
-										<div class="details" id="details" style="display: none;">
-											<div class="table-container">
-												<table class="table">
-													<tbody>
-														<tr>
-															<th scope="col">Kilomètres</th>
-															<td></td>
-														</tr>
-														<tr>
-															<th scope="col">Année de mise en circulation</th>
-															<td></td>
-														</tr>
-														<tr>
-															<th scope="col">Description</th>
-															<td></td>
-														</tr>
-														<tr>
-															<th scope="col">Caractéristiques</th>
-															<td></td>
-														</tr>
-														<tr>
-															<th scope="col">Équipements</th>
-															<td></td>
-														</tr>
-														<!-- Ajoutez plus de paires th/td ici pour plus de détails -->
-													</tbody>
-												</table>
-											</div>
-										</div>
-										<button class="btn btn-primary toggle-button" id="toggle-button" onclick="">En savoir plus</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</section>
-
-
-					<style></style>
-
-				</section>
-
+				
 				<!-- SECTION QUI SOMMES NOUS !-->
 				<section class="container marketing mb-lg-5" id="about">
 					<div class="row">
