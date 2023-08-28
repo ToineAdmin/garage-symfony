@@ -21,18 +21,46 @@ class SearchType extends AbstractType
                     'placeholder' => 'Rechercher'
                 ]
             ])
-            ->add('min', NumberType::class, [
+            ->add('minPrice', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Prix min'
                 ]
             ])
-            ->add('max', NumberType::class, [
+            ->add('maxPrice', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Prix max'
+                ]
+            ])
+            ->add('minMiles', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Kilométrage min'
+                ]
+            ])
+            ->add('maxMiles', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Kilométrage max'
+                ]
+            ])
+            ->add('minYear', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Année min'
+                ]
+            ])
+            ->add('maxYear', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Année max'
                 ]
             ])
         ;

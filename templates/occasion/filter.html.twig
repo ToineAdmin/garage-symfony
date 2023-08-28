@@ -4,12 +4,31 @@
     <h5>Prix</h5>
     <div class="row">
         <div class="col-md-6">
-            {{ form_row(form.min) }}
+            {{ form_row(form.minPrice) }}
         </div>
         <div class="col-md-6">
-            {{ form_row(form.max) }}
+            {{ form_row(form.maxPrice) }}
         </div>
     </div>
+    <h5>Kilomètres</h5>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.minMiles) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.maxMiles) }}
+        </div>
+    </div>
+    <h5>Année</h5>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.minYear) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.maxYear) }}
+        </div>
+    </div>
+
 
     <button type="submit" class="btn btn-primary w-100">Filtrer</button>
 {{ form_end(form) }}

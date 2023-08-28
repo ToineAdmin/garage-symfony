@@ -34,7 +34,6 @@ Eco consommation :
 Mode sport :
 Bluetooth :');
 
-
         return $car;
     }
 

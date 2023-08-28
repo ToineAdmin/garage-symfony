@@ -35,22 +35,46 @@ class CarRepository extends ServiceEntityRepository
                 ->setParameter('q', "%{$search->q}%");
         }
     
-        if(!empty($search->min)){
+        if(!empty($search->minPrice)){
             $query = $query
-                ->andWhere('c.price >= :min')
-                ->setParameter('min', $search->min);
+                ->andWhere('c.price >= :minPrice * 100')
+                ->setParameter('minPrice', $search->minPrice);
         }
     
-        if(!empty($search->max)){
+        if(!empty($search->maxPrice)){
             $query = $query
-                ->andWhere('c.price <= :max')
-                ->setParameter('max', $search->max);
+                ->andWhere('c.price <= :maxPrice * 100')
+                ->setParameter('maxPrice', $search->maxPrice);
+        }
+
+        if(!empty($search->minMiles)){
+            $query = $query
+                ->andWhere('c.miles >= :minMiles')
+                ->setParameter('minMiles', $search->minMiles);
+        }
+    
+        if(!empty($search->maxMiles)){
+            $query = $query
+                ->andWhere('c.miles <= :maxMiles')
+                ->setParameter('maxMiles', $search->maxMiles);
+        }
+
+        if(!empty($search->minYear)){
+            $query = $query
+                ->andWhere('c.year >= :minYear')
+                ->setParameter('minYear', $search->minYear);
+        }
+    
+        if(!empty($search->maxYear)){
+            $query = $query
+                ->andWhere('c.year <= :maxYear')
+                ->setParameter('maxYear', $search->maxYear);
         }
         
         $query = $query->getQuery();
         return $this->paginator->paginate(
             $query,
-            1,
+            $search->page,
             2
         );
 
