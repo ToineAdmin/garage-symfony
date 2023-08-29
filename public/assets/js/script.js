@@ -1,3 +1,5 @@
+
+
 var menuLinks = document.querySelectorAll('.nav-link');
 
 function updateActiveClass(event) {
@@ -29,4 +31,31 @@ function toggleDetails(index) {
         toggleButton.textContent = 'En savoir plus';
         card.classList.remove('expanded-card');
     }
+}
+
+// Filter slider noUiSlider
+
+const slider = document.getElementById('price-slider');
+
+if(slider){
+    const minPrice = document.getElementById('minPrice');
+    const maxPrice = document.getElementById('maxPrice');
+    const range = noUiSlider.create(slider, {
+        start: [minPrice.value || 0, maxPrice.value || 50000],
+        connect: true,
+        step:100,
+        range: {
+            'min': 500,
+            'max': 50000
+        }
+    });
+
+    range.on('slide', function (values,handle){
+        if (handle === 0 ){
+            minPrice.value = Math.round(values[0])
+        }
+        if (handle === 1){
+            maxPrice.value = Math.round(values[1])
+        }
+    })
 }

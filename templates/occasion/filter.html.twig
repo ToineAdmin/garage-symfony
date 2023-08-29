@@ -1,7 +1,7 @@
 {{ form_start(form, {attr: {class:'filter'}} ) }}
     {{ form_row(form.q) }}
 
-    <h5>Prix</h5>
+    <h5>Prix €</h5>
     <div class="row">
         <div class="col-md-6">
             {{ form_row(form.minPrice) }}
@@ -10,6 +10,7 @@
             {{ form_row(form.maxPrice) }}
         </div>
     </div>
+    <div id="price-slider"></div>
     <h5>Kilomètres</h5>
     <div class="row">
         <div class="col-md-6">
@@ -19,6 +20,7 @@
             {{ form_row(form.maxMiles) }}
         </div>
     </div>
+    <div id="miles-slider"></div>
     <h5>Année</h5>
     <div class="row">
         <div class="col-md-6">
@@ -28,6 +30,7 @@
             {{ form_row(form.maxYear) }}
         </div>
     </div>
+    <div id="year-slider"></div>
 
 
     <button type="submit" class="btn btn-primary w-100">Filtrer</button>

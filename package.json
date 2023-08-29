@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "nouislider": "^15.7.1"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^4.4.0",
+    "webpack-notifier": "^1.15.0"
   }
 }

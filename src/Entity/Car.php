@@ -45,11 +45,17 @@ class Car
     #[ORM\JoinColumn(name: 'created_by_id', referencedColumnName: 'id' , nullable: false)]
     private ?User $createdBy = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $year = null;
 
     #[ORM\Column(length: 255)]
     private ?string $fuel = null;
+
+    #[ORM\Column(type: "integer")]
+    #[Assert\Range(
+        min: 1995,
+        max: "now",
+        notInRangeMessage: 'Vous devez entrer une année entre {{ min }} et {{ max }}',
+    )]
+    private ?int $year = null;
 
     public function getId(): ?int
     {
@@ -179,15 +185,14 @@ class Car
         return $this;
     }
 
-    public function getYear(): ?\DateTimeInterface
+    public function getYear(): ?int
     {
         return $this->year;
     }
-
-    public function setYear(\DateTimeInterface $year): static
+    
+    public function setYear(int $year): static
     {
         $this->year = $year;
-
         return $this;
     }
 

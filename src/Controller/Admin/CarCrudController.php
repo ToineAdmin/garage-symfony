@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Car;
+use Symfony\Component\Validator\Constraints\Range;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -46,12 +47,21 @@ Bluetooth :');
             SlugField::new('slug')->setTargetFieldName('name')->hideOnIndex(),
             TextField::new('brand', 'Marque'),
             TextField::new('fuel', 'Carburant'),
-            DateField::new('year', 'Date de mise en circulation')
-                ->setFormTypeOption('widget', 'single_text')
-                ->setFormTypeOption('html5', false) 
-                ->setFormat('MMMM yyyy') // Format d'affichage mois-année (en utilisant IntlDateFormatter)
-                ->setRequired(false)
-                ->setTimezone('Europe/Paris'), // Définir le fuseau horaire si nécessaire
+            IntegerField::new('year', 'Année')
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 1995,
+                    'max' => date('Y')
+                ],
+                'constraints' => [
+                    new Range([
+                        'min' => 1995,
+                        'max' => date('Y'),
+                        'minMessage' => 'L\'année ne peut pas être inférieure à {{ limit }}.',
+                        'maxMessage' => 'L\'année ne peut pas être supérieure à {{ limit }}.',
+                    ])
+                ]
+                ]),
             ImageField::new('image')
                 ->setBasePath('uploads/')
                 ->setFormTypeOptions([

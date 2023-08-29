@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Data\SearchData;
 use App\Form\SearchType;
+use App\Repository\CarRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,33 +25,25 @@ class OccasionController extends AbstractController
     #[Route('/voiture-occasion', name: 'occasion')]
     public function index(Request $request): Response
     {
-
         $data = new SearchData;
-
         $data->page = $request->get('page', 1);
-
-
+    
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
 
+        $params = [
+            'cars' => $this->em->getRepository(Car::class)->findSearch($data),
+            'form' => $form->createView()
+        ];
+
+    
         if ($form->isSubmitted() && $form->isValid()) {
-            $cars = $this->em->getRepository(Car::class)->findSearch($data);
-           
-
-            return $this->render('occasion/index.html.twig', [
-                'cars' => $cars,
-                'form' => $form->createView()
-            ]);
-        }else {
-            $cars = $this->em->getRepository(Car::class)->findSearch($data);
-            
-            return $this->render('occasion/index.html.twig', [
-               'cars' => $cars,
-               'form' => $form->createView(),
-            ]);
+            [$minPrice, $maxPrice] = $this->em->getRepository(Car::class)->findMinMax($data);
+            $params['minPrice'] = $minPrice;
+            $params['maxPrice'] = $maxPrice;
         }
-        
-
-
+    
+        return $this->render('occasion/index.html.twig', $params);
     }
+    
 }
