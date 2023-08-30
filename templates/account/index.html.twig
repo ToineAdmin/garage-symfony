@@ -1,47 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte - Garage V.PARROT{% endblock %}
+{% block title %}Mon compte - Garage V.PARROT
+{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1>Mon compte</h1>
-        <p>Bienvenue {{ app.user.firstname }} ! Vous pouvez administrer le site depuis cet espace.</p>
+	<div class="container account mt-5 mb-5">
+		<h1>Mon compte</h1>
+		<p>Bienvenue
+			{{ app.user.firstname }}
+			! Vous pouvez administrer le site depuis cet espace.</p>
+		<hr>
+		{% if is_granted('ROLE_ADMIN') %}
+			<h2 class="text-center">Vous êtes l'administrateur de ce site
+			</h2><br/>
+		{% endif %}
+		<div class="row account-item-row mb-5">
+			<div class="col-md-4">
+				<a href="{{ path('account_password') }}" class="account-item text-center btn-relief">
+					<img src="{{ asset('assets/img/cadenas.png') }}" alt="Modifier mon mot de passe"><br/>
+					<span>Modifier mon mot de passe</span>
+				</a>
+			</div>
+			{% if is_granted('ROLE_ADMIN') %}
+				<div class="col-md-4">
+					<a href="{{ path('admin') }}" class="account-item text-center btn-relief">
+						<img src="{{ asset('assets/img/navigateur.png') }}" alt="Gérer votre site"><br/>
+						<span>Gérer votre site</span>
+					</a>
+				</div>
+			{% elseif is_granted('ROLE_USER') %}
+				<div class="col-md-4">
+					<a href="{{ path('admin') }}" class="account-item text-center btn-relief">
+						<img src="{{ asset('assets/img/voiture.png') }}" alt="Gérer les voitures"><br/>
+						<span>Gérer les voitures</span>
+					</a>
+				</div>
+			{% endif %}
+			<div class="col-md-4">
+				<a href="#" class="account-item text-center btn-relief">
+					<img src="{{ asset('assets/img/user-interface.png') }}" alt="Gérer les avis clients"><br/>
+					<span>Gérer les avis</span>
+				</a>
+			</div>
 
+		</div>
 
-
-        <hr>
-        {% if is_granted('ROLE_ADMIN') %}
-            <h2 class="text-center">Vous êtes l'administrateur de ce site </h2><br/>
-        {% endif %}
-        <div class="row mb-5">
-            <div class="col-md-4">
-                <div class="account-item text-center">
-                    <img src="{{ asset('assets/img/cadenas.png') }}" alt="Modifier mon mot de passe"><br/>
-                    <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
-                </div>
-            </div>
-            {% if is_granted('ROLE_ADMIN') %}
-                <div class="col-md-4">
-                    <div class="account-item text-center">
-                        <img src="{{ asset('assets/img/navigateur.png') }}" alt="Gérer le site"><br/>
-                        <a href="{{ path('admin') }}">Gérer votre site</a><br>
-                    </div>
-                </div>
-            {% elseif is_granted('ROLE_USER') %}
-                <div class="col-md-4">
-                    <div class="account-item text-center">
-                        <img src="{{ asset('assets/img/voiture.png') }}" alt="Gérer les voitures du magasin"><br/>
-                        <a href="{{ path('admin') }}">Gérer les voitures</a><br>
-                    </div>
-                </div>
-            {% endif %}
-            <div class="col-md-4">
-                <div class="account-item text-center">
-                    <img src="{{ asset('assets/img/user-interface.png') }}" alt="Gérer les avis"><br/>
-                    <a href="#">Gérer les avis clients</a><br>
-                </div>
-            </div>
-        </div>
-
-    </div>
+	</div>
 {% endblock %}

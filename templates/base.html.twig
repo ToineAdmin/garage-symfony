@@ -9,7 +9,9 @@
 		<meta name="generator" content="Hugo 0.112.5">
 
 		<title></title>
-
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 		<link rel="stylesheet" href="{{asset('assets/css/nouislider.css')}}">
 		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
@@ -60,7 +62,7 @@
 
 				<!-- SECTION ACCUEIL !-->
 				<section class="container-fluid" id="home">
-					<div class="py-5 text-center container accueil" >
+					<div class="py-5 text-center container accueil">
 						<div class="row py-lg-5">
 							<div class="col-lg-6 col-md-8 mx-auto">
 								<h1 class="fw-light">Garage V.PARROT</h1>
@@ -85,8 +87,14 @@
 								{% include 'service/single_service.html.twig' %}
 							{% endfor %}
 						</div>
+						<div class="row w-100">
+							<div class="col-md-12 d-flex justify-content-center mt-5">
+								<a href="#" class="btn btn-danger rdv-btn">Prendre rendez-vous</a>
+							</div>
+						</div>
 					</div>
 				</section>
+
 
 				<div class="container-fluid bg-light my-5">
 					<div
@@ -152,51 +160,54 @@
 						</div>
 					</div>
 					<div class="row contact-form d-flex justify-content-center">
-						<div class="col-sm-12 col-md-6 ">
-							contact form
-						</div>
-						<div class="col-md-4">
-							<h2>Horaire d'ouvertures</h2>
-						</div>
-					</div>
-				</section>
+						<div class="col-sm-12 col-md-6 "></div>
+					</section>
 
-			</main>
-		{% endblock %}
+				</main>
+			{% endblock %}
 
-		<footer class="footer-custom">
-			<div class="container">
-				<p>&copy; 2023 Garage V.PARROT. Tous droits réservés.</p>
-				<p>
-					<a href="#">Politique de confidentialité</a>
-					|
-					<a href="#">Mentions légales</a>
-				</p>
-			</div>
-			<div
-				class="container">
-				<!-- Section des horaires -->
-				<div class="row mb-4">
-					<div class="col-md-12">
-						<h4>Horaires d'ouverture</h4>
-						<ul class="list-unstyled">
-							<li>Lundi : 8h00 - 18h00</li>
-							<li>Mardi : 8h00 - 18h00</li>
-							<li>Mercredi : 8h00 - 18h00</li>
-							<li>Jeudi : 8h00 - 18h00</li>
-							<li>Vendredi : 8h00 - 18h00</li>
-							<li>Samedi : 9h00 - 17h00</li>
-							<li>Dimanche : Fermé</li>
-						</ul>
-					</div>
+			<footer class="footer-custom">
+				<div class="container">
+					<p>&copy; 2023 Garage V.PARROT. Tous droits réservés.</p>
+					<p>
+						<a href="#">Politique de confidentialité</a>
+						|
+						<a href="#">Mentions légales</a>
+					</p>
 				</div>
-			</footer>
+				<div class="container">
+					<div class="row mb-4">
+						<div class="col-md-12">
+							<h4>Horaires d'ouverture</h4>
+							<ul class="list-unstyled">
+								{% for hour in openingHours %}
+									<li>
+										{{ hour.day }}
+										:
+										{% if hour.isClosed %}
+											Fermé
+										{% else %}
+											{{ hour.morningOpeningTime|date('H:i') }}
+											-
+											{{ hour.morningClosingTime|date('H:i') }}
+											/
+											{{ hour.afternoonOpeningTime|date('H:i') }}
+											-
+											{{ hour.afternoonClosingTime|date('H:i') }}
+										{% endif %}
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</footer>
 
 
-			<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
-			<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-			<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
-			<script src="{{asset('assets/js/script.js')}}"></script>
+				<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
+				<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+				<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
+				<script src="{{asset('assets/js/script.js')}}"></script>
+			</body>
 		</body>
 	</body>
 </html>

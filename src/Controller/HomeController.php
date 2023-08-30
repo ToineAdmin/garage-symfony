@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Service;
 use App\Entity\User;
+use App\Entity\Service;
+use App\Entity\OpeningHour;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,10 +25,12 @@ class HomeController extends AbstractController
     {
         $services = $this->em->getRepository(Service::class)->findAll();
         $users = $this->em->getRepository(User::class)->findAll();
+        $openingHours = $this->em->getRepository(OpeningHour::class)->findAll();
 
         return $this->render('home/index.html.twig',[
             'services' => $services,
-            'users' => $users
+            'users' => $users,
+            'openingHours' => $openingHours
         ]);
     }
 }
