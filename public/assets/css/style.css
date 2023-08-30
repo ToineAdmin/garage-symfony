@@ -251,35 +251,55 @@ body{
 }
 
 /* SERVICES */
-
 .glassmorphic-box {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 20px;
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 300px; /* Ajustez la hauteur comme nécessaire */
+    height: 330px; 
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
 }
 
-.glassmorphic-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 12px 15px rgba(0, 0, 0, 0.15);
+.svg-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.hexagon-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .centered-image {
-    display: block;
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 2;
+    max-width: 80%; 
+    max-height: 80%; 
 }
 
 .glassmorphic-content {
     margin-top: 10px;
     text-align: center;
-    cursor:default;
+    cursor: default;
+    position: relative; 
+    z-index: 3;
+}
+
+.glassmorphic-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 12px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
 }
 
 
@@ -290,7 +310,7 @@ body{
 }
 
 .text-light-bold {
-    font-weight: 600 ; /* Utilisez la valeur appropriée pour un style de gras léger */
+    font-weight: 600 ;
 }
 
 .filter{
@@ -299,3 +319,107 @@ body{
     top:20px;
 
 }
+
+/* QUI SOMMES NOUS */
+
+/* Stylesheet pour votre front */
+.img-container {
+    transition: transform 0.3s ease-in-out; 
+}
+
+.img-container:hover {
+    transform: scale(1.05); 
+}
+
+.img-rounded {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease-in-out; 
+}
+
+.img-rounded:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.profile-header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-header h2, .profile-header h5 {
+    transition: color 0.3s ease-in-out; 
+}
+
+.profile-header:hover h2, .profile-header:hover h5 {
+    color: #007bff; 
+}
+
+.row.img-center-text {
+    display: flex;
+    align-items: center;
+}
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.liste {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.liste li img {
+    margin-right: 10px;  
+}
+
+@media (max-width: 767px) {
+    .liste {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100vw;
+    }
+    .liste .col-lg-4,
+    .liste .col-md-4,
+    .liste .col-sm-12 {
+        flex: 0 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+        margin-bottom: 20px;
+        margin-left: 5px;  
+        margin-right: 5px;  
+    }
+    .liste li img {
+        margin-right: 10px;  
+    }
+}
+
+/* ACCUEIL */
+
+#home {
+    background-image: url('../img/bg-garage.jpg');
+    background-size: cover;     
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    height: 600px;
+    display: flex;
+    align-items: center; /* centrage vertical */
+    justify-content: center; /* centrage horizontal */
+}
+
+#home .fw-light,
+#home .lead,
+#home .lead a {
+    color: white !important;
+}
+
+
+

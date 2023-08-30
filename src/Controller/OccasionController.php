@@ -37,11 +37,6 @@ class OccasionController extends AbstractController
         ];
 
     
-        if ($form->isSubmitted() && $form->isValid()) {
-            [$minPrice, $maxPrice] = $this->em->getRepository(Car::class)->findMinMax($data);
-            $params['minPrice'] = $minPrice;
-            $params['maxPrice'] = $maxPrice;
-        }
     
         return $this->render('occasion/index.html.twig', $params);
     }

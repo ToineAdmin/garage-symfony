@@ -31,7 +31,7 @@
 							<a href="{{ path('occasion') }}" class="nav-link px-2 text-white">Occasions</a>
 						</li>
 						<li>
-							<a href="#" class="nav-link px-2 text-white">Qui sommes nous ?</a>
+							<a href="#" class="nav-link px-2 text-white">L'Équipe</a>
 						</li>
 						<li>
 							<a href="#" class="nav-link px-2 text-white">Contact</a>
@@ -59,21 +59,23 @@
 
 
 				<!-- SECTION ACCUEIL !-->
-				<section class="py-5 text-center container" id="home">
-					<div class="row py-lg-5">
-						<div class="col-lg-6 col-md-8 mx-auto">
-							<h1 class="fw-light">Garage V.PARROT</h1>
-							<p class="lead text-body-secondary">
-								Un garage à l'écoute, compétent et disponible !<br/>
-								<a href="{{ path('occasion') }}" class="btn btn-primary my-2">Nos occasions</a>
-								<a href="#contact" class="btn btn-secondary my-2">Nous contacter</a>
-							</p>
+				<section class="container-fluid" id="home">
+					<div class="py-5 text-center container accueil" >
+						<div class="row py-lg-5">
+							<div class="col-lg-6 col-md-8 mx-auto">
+								<h1 class="fw-light">Garage V.PARROT</h1>
+								<p class="lead text-body-secondary">
+									Un garage à l'écoute, compétent et disponible !<br/>
+									<a href="{{ path('occasion') }}" class="btn  btn-danger my-2">Nos occasions</a>
+									<a href="#contact" class="btn btn-primary my-2">Nous contacter</a>
+								</p>
+							</div>
 						</div>
 					</div>
 				</section>
 
 				<!-- SECTION SERVICES !-->
-				<section id="services">
+				<section id="services" class="mt-5">
 					<div class="container d-flex flex-wrap mb-5">
 						<div class="row w-100">
 							<h2 class="text-center mb-5">Nos Services</h2>
@@ -85,20 +87,60 @@
 						</div>
 					</div>
 				</section>
-				
-				<!-- SECTION QUI SOMMES NOUS !-->
+
+				<div class="container-fluid bg-light my-5">
+					<div
+						class="row img-center-text">
+						<!-- Colonne Image -->
+						<div class="col-lg-6 col-md-6 col-sm-12 p-0">
+							<img src="{{ asset('assets/img/garage.jpg') }}" alt="" class="img-fluid w-100"/>
+						</div>
+
+						<!-- Colonne Texte et Liste -->
+						<div class="col-lg-6 col-md-6 col-sm-12 py-5 px-5 centered-content">
+							<h2 class="my-4">VÉHICULES TOUTES MARQUES</h2>
+							<p class="description">Nous fournissons un service d'entretien de premier ordre pour tous les types de véhicules.</p>
+							<div class="row mt-4 liste">
+								<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center">
+									<ul class="list-unstyled">
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Renault</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Peugeot</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Citroen</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Vokswagen</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Dacia</li>
+									</ul>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center">
+									<ul class="list-unstyled">
+										<li><img src="{{ asset('assets/img/verifier.png') }}" class="mr-3">Toyota</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Ford</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Opel</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Nissan</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Fiat</li>
+									</ul>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center">
+									<ul class="list-unstyled">
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Mercedes</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Audi</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">BMW</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Kia</li>
+										<li><img src="{{ asset('assets/img/verifier.png') }}">Hyundai</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- SECTION L'EQUIPE !-->
 				<section class="container marketing mb-lg-5" id="about">
 					<div class="row">
-						<h2 class="text-center mb-lg-5 mt-lg-5">Qui sommes nous ?</h2>
-						<?php foreach ($usersData as $user) : ?>
-						<div class="col-lg-4 img-container">
-							<svg class="bd-placeholder-img rounded-circle" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveaspectratio="xMidYMid slice" focusable="false">
-								<image href="../<?php echo $user->image_path; ?>" width="200" height="200" preserveaspectratio="xMidYMid slice"/>
-							</svg>
-							<h2 class="fw-normal text-center">Employé</h2>
-							<h5 class="fw-normal text-center">Métier</h5>
-						</div>
-						<?php endforeach ?>
+						<h2 class="text-center mb-lg-5 mt-lg-5">Notre équipe de professionnels</h2>
+						{% for user in users %}
+							{% include 'team/single_user.html.twig' %}
+						{% endfor %}
 					</div>
 				</section>
 
@@ -122,11 +164,39 @@
 			</main>
 		{% endblock %}
 
-		<footer class="text-body-secondary py-5"></footer>
+		<footer class="footer-custom">
+			<div class="container">
+				<p>&copy; 2023 Garage V.PARROT. Tous droits réservés.</p>
+				<p>
+					<a href="#">Politique de confidentialité</a>
+					|
+					<a href="#">Mentions légales</a>
+				</p>
+			</div>
+			<div
+				class="container">
+				<!-- Section des horaires -->
+				<div class="row mb-4">
+					<div class="col-md-12">
+						<h4>Horaires d'ouverture</h4>
+						<ul class="list-unstyled">
+							<li>Lundi : 8h00 - 18h00</li>
+							<li>Mardi : 8h00 - 18h00</li>
+							<li>Mercredi : 8h00 - 18h00</li>
+							<li>Jeudi : 8h00 - 18h00</li>
+							<li>Vendredi : 8h00 - 18h00</li>
+							<li>Samedi : 9h00 - 17h00</li>
+							<li>Dimanche : Fermé</li>
+						</ul>
+					</div>
+				</div>
+			</footer>
 
-		<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
-		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-		<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
-		<script src="{{asset('assets/js/script.js')}}"></script>
+
+			<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
+			<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+			<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
+			<script src="{{asset('assets/js/script.js')}}"></script>
+		</body>
 	</body>
 </html>

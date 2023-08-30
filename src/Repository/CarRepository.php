@@ -80,14 +80,6 @@ class CarRepository extends ServiceEntityRepository
 
     }
 
-    /**
-     * Recupère le prix minimum et max correspondant à une recherche
-     * @return integer[]
-     */
-    public function findMinMax(SearchData $search):array
-    {
-        return [0,1000];
-    }
     
 
 //    /**
