@@ -112,3 +112,12 @@ if(yearSlider){
         }
     });
 }
+
+// MODIFICATION AGE DU GARAGE
+document.addEventListener("DOMContentLoaded", function() {
+    const startYear = 2021;
+    const currentYear = new Date().getFullYear(); // Récupère l'année actuelle
+    const yearsActive = currentYear - startYear;
+    
+    document.getElementById("yearsActive").textContent = yearsActive;
+});

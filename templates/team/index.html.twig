@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'equipe - GARAGE V.PARROT{% endblock %}
+
+{% block content %}
+<!-- SECTION L'EQUIPE !-->
+<section class="container marketing mb-lg-5" id="about">
+    <h2 class="text-center mb-lg-5 mt-lg-5">Notre équipe de professionnels</h2>
+    <div class="row justify-content-center"> <!-- Ajoutez la classe justify-content-center pour centrer les éléments -->
+        {% for user in users %}
+            <div class="col-lg-6 d-flex justify-content-center">
+                {% include 'team/single_user.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

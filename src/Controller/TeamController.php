@@ -3,14 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Service;
-use App\Entity\OpeningHour;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController extends AbstractController
+class TeamController extends AbstractController
 {
 
     private $em;
@@ -20,16 +18,12 @@ class HomeController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'home')]
+    #[Route('/equipe', name: 'team')]
     public function index(): Response
     {
-        $services = $this->em->getRepository(Service::class)->findAll();
-        
-        $openingHours = $this->em->getRepository(OpeningHour::class)->findAll();
-
-        return $this->render('home/index.html.twig',[
-            'services' => $services,
-            'openingHours' => $openingHours
+        $users = $this->em->getRepository(User::class)->findAll();
+        return $this->render('team/index.html.twig', [
+            'users' => $users
         ]);
     }
 }

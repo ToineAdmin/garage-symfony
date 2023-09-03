@@ -33,7 +33,7 @@
 							<a href="{{ path('occasion') }}" class="nav-link px-2 text-white">Occasions</a>
 						</li>
 						<li>
-							<a href="#" class="nav-link px-2 text-white">L'Équipe</a>
+							<a href="{{ path('team') }}" class="nav-link px-2 text-white">L'Équipe</a>
 						</li>
 						<li>
 							<a href="#" class="nav-link px-2 text-white">Contact</a>
@@ -59,7 +59,6 @@
 		{% block content %}
 			<main>
 
-
 				<!-- SECTION ACCUEIL !-->
 				<section class="container-fluid" id="home">
 					<div class="py-5 text-center container accueil">
@@ -67,7 +66,7 @@
 							<div class="col-lg-6 col-md-8 mx-auto">
 								<h1 class="fw-light">Garage V.PARROT</h1>
 								<p class="lead text-body-secondary">
-									Un garage à l'écoute, compétent et disponible !<br/>
+									Un garage à l'écoute, compétent et disponible depuis <span id="yearsActive"></span> ans !<br/> !<br/>
 									<a href="{{ path('occasion') }}" class="btn  btn-danger my-2">Nos occasions</a>
 									<a href="#contact" class="btn btn-primary my-2">Nous contacter</a>
 								</p>
@@ -140,17 +139,6 @@
 						</div>
 					</div>
 				</div>
-
-
-				<!-- SECTION L'EQUIPE !-->
-				<section class="container marketing mb-lg-5" id="about">
-					<div class="row">
-						<h2 class="text-center mb-lg-5 mt-lg-5">Notre équipe de professionnels</h2>
-						{% for user in users %}
-							{% include 'team/single_user.html.twig' %}
-						{% endfor %}
-					</div>
-				</section>
 
 				<!-- SECTION CONTACT !-->
 				<section class="container" id="contact">
