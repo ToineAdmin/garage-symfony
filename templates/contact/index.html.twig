@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - GARAGE V.PARROT
+{% endblock %}
+
+{% block content %}
+	<div class="container custom-container">
+		<div
+			class="row .contact-row">
+			<!-- Première colonne -->
+			<div class="col-md-4 d-flex justify-content-center">
+				<ul class="features-list text-center">
+					<li>
+						<h5>NOUS CONTACTER</h5>
+						<div class="d-flex justify-content-center">
+							<img src="{{asset('assets/img/telephone.png')}}" class="img-fluid">
+						</div>
+						<p>
+							Mobile:
+							<strong>06 12 78 55 **</strong><br>
+							Assistance:
+							<strong>03 74 52 86 **</strong><br>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- Deuxième colonne -->
+			<div class="col-md-4 d-flex justify-content-center">
+				<ul class="features-list text-center">
+					<li>
+						<h5>GARAGE V.PARROT</h5>
+						<div class="d-flex justify-content-center">
+							<img src="{{asset('assets/img/plans.png')}}" class="img-fluid ">
+						</div>
+						<p>
+							Rue Jean Moulin<br>
+							31000 Toulouse<br>
+
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- Troisième colonne -->
+			<div class="col-md-4 d-flex justify-content-center">
+				<ul class="features-list text-center">
+					<li>
+						<h5>ASSISTANCE DÉPANNAGE</h5>
+						<div class="d-flex justify-content-center">
+							<img src="{{asset('assets/img/tow-truck.png')}}" class="img-fluid ">
+						</div>
+						<p>Du lundi au Vendredi
+							<br>au
+							<strong>03 74 52 86 **</strong>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center mt-5 mb-5">
+			<div class="col-md-4">
+				<div class="glass-card">
+                    <h5 class="text-center">Écrivez nous !</h5>
+					<div class="row mt-5">
+						<div class="col-md-6">
+							{{ form_row(form.prenom) }}
+						</div>
+						<div class="col-md-6">
+							{{ form_row(form.nom) }}
+						</div>
+					</div>
+					{{ form_widget(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

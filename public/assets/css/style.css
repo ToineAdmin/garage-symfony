@@ -500,5 +500,39 @@ p.lead.text-body-secondary {
 }
 
 
+/* CONTACT */
+
+ul, li {
+    list-style: none;
+}
+
+
+.contact-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.custom-container {
+    max-width: 80%; 
+    margin-top: 150px;
+}
+
+
+.glass-card {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);  /* un fond semi-transparent */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    box-shadow: 7px 7px 14px #c9c9c9, -7px -7px 14px #ffffff;  /* ombres douces pour l'effet neomorphic */
+    backdrop-filter: blur(10px);  /* effet de flou pour le glassmorphism */
+    transition: all 0.3s ease-in-out;
+}
+
+.glass-card:hover {
+    box-shadow: 4px 4px 7px #c9c9c9, -4px -4px 7px #ffffff;
+}
+
+
+
 
 
