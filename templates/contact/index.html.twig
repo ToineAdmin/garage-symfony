@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block content %}
-	<div class="container custom-container">
+	<div class="container-fluid custom-container">
 		<div
 			class="row .contact-row">
 			<!-- Première colonne -->
-			<div class="col-md-4 d-flex justify-content-center">
+			<div class="col-md-4">
 				<ul class="features-list text-center">
 					<li>
 						<h5>NOUS CONTACTER</h5>
@@ -59,7 +59,8 @@
 		<div class="row d-flex justify-content-center mt-5 mb-5">
 			<div class="col-md-4">
 				<div class="glass-card">
-                    <h5 class="text-center">Écrivez nous !</h5>
+					<h5 class="text-center">Écrivez nous !</h5>
+					{{ form_start(form) }}
 					<div class="row mt-5">
 						<div class="col-md-6">
 							{{ form_row(form.prenom) }}
@@ -69,8 +70,13 @@
 						</div>
 					</div>
 					{{ form_widget(form) }}
+					{{ form_end(form) }}
+					{% for message in app.flashes ('notice') %}
+						<div class="alert alert-info">{{ message }}</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
 	</div>
-{% endblock %}
+
+</div>{% endblock %}
