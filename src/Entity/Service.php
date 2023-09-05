@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\ServiceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Trait\CreatedAtTrait;
+use App\Repository\ServiceRepository;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
 class Service
 {
+
+    use CreatedAtTrait;
+
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

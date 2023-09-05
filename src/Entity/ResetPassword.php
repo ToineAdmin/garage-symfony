@@ -2,12 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\ResetPasswordRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Trait\CreatedAtTrait;
+use App\Repository\ResetPasswordRepository;
 
 #[ORM\Entity(repositoryClass: ResetPasswordRepository::class)]
 class ResetPassword
 {
+
+    use CreatedAtTrait;
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,8 +25,7 @@ class ResetPassword
     #[ORM\Column(length: 255)]
     private ?string $token = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+
 
     public function getId(): ?int
     {
@@ -52,15 +56,4 @@ class ResetPassword
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
 }
