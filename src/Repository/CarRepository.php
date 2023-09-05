@@ -75,7 +75,7 @@ class CarRepository extends ServiceEntityRepository
         return $this->paginator->paginate(
             $query,
             $search->page,
-            2
+            6
         );
 
     }

@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Service;
-use Faker\Factory;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -33,9 +32,9 @@ class ServicesFixtures extends Fixture
                 'image' => '../assets/img/tow-truck.png'
             ],
             [
-                'name' => 'Vente d\'occasion',
-                'description' => 'Notre large game de voitures d\'occasions garanties est à portée de main',
-                'image' => '../assets/img/voiture.png'
+                'name' => 'Climatisation',
+                'description' => 'Une climatisation défectueuse ? Nous pouvons la recharger ou la réparer.',
+                'image' => '../assets/img/snowflake.png'
             ],
             
         ];
@@ -52,4 +51,5 @@ class ServicesFixtures extends Fixture
     
         $manager->flush();
     }
+
 }
