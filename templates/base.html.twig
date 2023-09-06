@@ -66,7 +66,10 @@
 							<div class="col-lg-6 col-md-8 mx-auto">
 								<h1 class="fw-light">Garage V.PARROT</h1>
 								<p class="lead text-body-secondary">
-									Un garage à l'écoute, compétent et disponible depuis <span id="yearsActive"></span> ans !<br/> !<br/>
+									Un garage à l'écoute, compétent et disponible depuis
+									<span id="yearsActive"></span>
+									ans !<br/>
+									!<br/>
 									<a href="{{ path('occasion') }}" class="btn  btn-danger my-2">Nos occasions</a>
 									<a href="#contact" class="btn btn-primary my-2">Nous contacter</a>
 								</p>
@@ -141,49 +144,57 @@
 				</div>
 
 
+			</main>
+		{% endblock %}
 
-				</main>
-			{% endblock %}
-
-			<footer class="footer-custom">
-				<div class="container">
-					<p>&copy; 2023 Garage V.PARROT. Tous droits réservés.</p>
-					<p>
-						<a href="#">Politique de confidentialité</a>
-						|
-						<a href="#">Mentions légales</a>
-					</p>
-				</div>
-				<div class="container">
-					<div class="row mb-4">
-						<div class="col-md-12">
-							<h4>Horaires d'ouverture</h4>
-							<ul class="list-unstyled">
-								{% for hour in openingHours %}
-									<li>
-										{{ hour.day }}
-										:
-										{% if hour.isClosed %}
+		<footer class="footer-custom">
+			<div class="container">
+				<p>&copy; 2023 Garage V.PARROT. Tous droits réservés.</p>
+				<p>
+					<a href="#">Politique de confidentialité</a>
+					|
+					<a href="#">Mentions légales</a>
+				</p>
+			</div>
+			<div class="container">
+				<div class="row mb-4">
+					<div class="col-md-12">
+						<h4>Horaires d'ouverture</h4>
+						<ul class="list-unstyled">
+							{% for hour in openingHours %}
+								<li>
+									{{ hour.day }}
+									:
+									{% if hour.isClosed %}
+										Fermé
+									{% else %}
+										{% if hour.isMorningClosed() %}
 											Fermé
 										{% else %}
 											{{ hour.morningOpeningTime|date('H:i') }}
 											-
 											{{ hour.morningClosingTime|date('H:i') }}
-											/
+										{% endif %}
+										/
+										{% if hour.isAfternoonClosed() %}
+											Fermé
+										{% else %}
 											{{ hour.afternoonOpeningTime|date('H:i') }}
 											-
 											{{ hour.afternoonClosingTime|date('H:i') }}
 										{% endif %}
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
+									{% endif %}
+								</li>
+							{% endfor %}
+						</ul>
 					</div>
-				</footer>
-				<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-				<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
-				<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
-				<script src="{{asset('assets/js/script.js')}}"></script>
-			</body>
-		</body>
-</html>
+				</div>
+			</div>
+		</footer>
+
+		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+		<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
+		<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
+		<script src="{{asset('assets/js/script.js')}}"></script>
+	</body>
+</html></body></html>

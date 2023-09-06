@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\OpeningHourRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: OpeningHourRepository::class)]
 class OpeningHour
@@ -21,12 +22,14 @@ class OpeningHour
     private ?bool $isClosed = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[Assert\LessThan(propertyPath: "morningClosingTime", message: "L'heure d'ouverture du matin doit être inférieure à l'heure de fermeture.")]
     private ?\DateTimeInterface $morningOpeningTime = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $morningClosingTime = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[Assert\LessThan(propertyPath: "afternoonClosingTime", message: "L'heure d'ouverture de l'après-midi doit être inférieure à l'heure de fermeture.")]
     private ?\DateTimeInterface $afternoonOpeningTime = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
@@ -109,4 +112,16 @@ class OpeningHour
 
         return $this;
     }
+
+    public function isMorningClosed(): bool
+    {
+        return $this->morningOpeningTime === null && $this->morningClosingTime === null;
+    }
+
+    public function isAfternoonClosed(): bool
+    {
+        return $this->afternoonOpeningTime === null && $this->afternoonClosingTime === null;
+    }
+
+    
 }
