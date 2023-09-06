@@ -121,3 +121,32 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById("yearsActive").textContent = yearsActive;
 });
+
+// FEEDBACK CARD
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.toggle-text').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const action = e.target.getAttribute('data-action');
+            const feedbackCard = e.target.closest('.feedback-card');
+            const feedbackText = e.target.closest('.feedback-text');
+            const moreText = feedbackText.querySelector('.more-text');
+            const showButton = feedbackText.querySelector('button[data-action="show"]');
+            const hideButton = moreText.querySelector('button[data-action="hide"]');
+
+            if (action === 'show') {
+                moreText.style.display = 'inline';
+                showButton.style.display = 'none';
+                feedbackCard.style.height = 'auto';
+            } else if (action === 'hide') {
+                moreText.style.display = 'none';
+                showButton.style.display = 'inline';
+                feedbackCard.style.height = ''; // Remet la hauteur à sa valeur par défaut
+            }
+        });
+    });
+});
+
+

@@ -460,6 +460,95 @@ ul, li {
     box-shadow: 4px 4px 7px #c9c9c9, -4px -4px 7px #ffffff;
 }
 
+/* FEEDBACK */
+
+.feedback-card, .feedback-form{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 250px;
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
+}
+
+.feedback-form{
+    height: 500px;
+}
+
+.feedback-card .card-header {
+    background-color: #84B262 !important; 
+    color: #fff;
+    padding: 0.75rem 1.25rem; /
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    font-weight: normal; /* Pour le h6 */
+    border-radius: 0.5rem 0.5rem 0 0;
+    flex-shrink: 0;
+}
+
+.feedback-card .card-header h6 {
+    font-weight: normal;
+    text-align: center;
+}
+
+.feedback-card .card-body {
+    padding: 1.25rem;
+    position: relative;
+    padding-bottom: 30px; 
+    border-radius: 0 0 0.5rem 0.5rem;
+    flex-grow: 1; /* Permet au card-body de grandir pour remplir l'espace restant */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.feedback-card .card-body .feedback-content {
+    margin-bottom: 1rem;
+}
+
+.feedback-card .secondary-text {
+    position: absolute;
+    color: lightgray;
+    right: 10px; 
+    bottom: 10px; 
+}
+
+
+.more-text {
+    display: none;
+}
+
+button.toggle-text {
+    background: none;
+    color: blue;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;  
+}
+
+button.toggle-text:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#feedback_submit{
+    width: 100%;
+    background-color: #84B262;
+}
+
+.rating {
+    display: flex;
+    align-items: center; 
+    gap: 5px;
+}
+
+
+
 
 
 

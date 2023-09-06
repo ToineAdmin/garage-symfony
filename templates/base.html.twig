@@ -99,11 +99,9 @@
 
 
 				<div class="container-fluid bg-light my-5">
-					<div
-						class="row img-center-text">
-						<!-- Colonne Image -->
+					<div class="row img-center-text">
 						<div class="col-lg-6 col-md-6 col-sm-12 p-0">
-							<img src="{{ asset('assets/img/garage.jpg') }}" alt="" class="img-fluid w-100"/>
+							<img src="{{ asset('assets/img/garage.jpg') }}" alt="photo de garage" class="img-fluid w-100"/>
 						</div>
 
 						<!-- Colonne Texte et Liste -->
@@ -142,35 +140,58 @@
 						</div>
 					</div>
 				</div>
-
 				<!-- SECTION Feedbacks !-->
 				<section id="feedbacks" class="mt-5">
-					<div
-						class="container">
-						<!-- Titre de la section -->
+					<div class="container">
 						<div class="row mb-4">
-							<h2 class="text-center">Avis récents</h2>
+							<h2 class="text-center">Votre avis compte pour nous ! </h2>
 						</div>
-
 						<!-- Lignes des feedbacks -->
 						<div class="row justify-content-center">
 							{% for feedback in feedbacks %}
-								<div class="feedback col-md-3 mb-3 mx-2">
-									<div class="card-header">
-										<h3>{{ feedback.name }}</h3>
-									</div>
-									<div class="card-body">
-										<p>{{ feedback.comment }}</p>
+								<div class="feedback col-sm-12 col-lg-4 col-md-6 mb-4">
+									<div class="feedback-card border-0 shadow-sm">
+										<div class="card-header bg-primary text-white">
+											<h6>{{ feedback.name }}</h6>
+										</div>
+										<div class="card-body">
+											<div class="feedback-content">
+												<p class="feedback-text">
+													{% set words = feedback.comment|split(' ') %}
+													{% if words|length > 20 %}
+														{{ words|slice(0, 20)|join(' ') }}...
+														<button class="toggle-text" data-action="show">voir plus</button>
+														<span class="more-text">
+															{{ words|slice(20)|join(' ') }}
+															<button class="toggle-text" data-action="hide">voir moins</button>
+														</span>
+													{% else %}
+														{{ feedback.comment }}
+													{% endif %}
+
+												</p>
+											</div>
+											<div class="rating">
+												<p class="mb-0">{{ feedback.rating }}/5</p>
+												<img src="{{ asset('assets/img/star.png') }}" alt="étoile" />
+											</div>
+
+											<p class="secondary-text text-muted bottom-0">
+												<small>Posté le
+													{{ feedback.createdAt|date('d/m/Y à H:i') }}</small>
+											</p>
+										</div>
 									</div>
 								</div>
 							{% endfor %}
 						</div>
 
 						<!-- Formulaire de feedback -->
-						<div class="row justify-content-center">
-							<div class="feedback-form col-md-3 mt-5">
-								<h4>Laissez votre avis</h4>
+						<div class="row justify-content-center mb-5">
+							<div class="feedback-form col-md-4 mt-5">
+								<h4 class="mb-4 mt-4 text-center">Laissez nous un avis</h4>
 								{{ form(form) }}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -230,4 +251,4 @@
 		<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
 		<script src="{{asset('assets/js/script.js')}}"></script>
 	</body>
-</html></body></html>
+</html></body></html></body></html>

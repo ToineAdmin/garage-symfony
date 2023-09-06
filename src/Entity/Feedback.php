@@ -9,6 +9,7 @@ use App\Repository\FeedbackRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FeedbackRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Feedback
 {
 
@@ -43,10 +44,11 @@ class Feedback
         max: 5,
         notInRangeMessage: 'La note doit être entre {{ min }} et {{ max }}',
     )]
-    private ?int $rating = null;
+    private ?float $rating = null;
 
     #[ORM\Column]
     private ?bool $approved = false;
+    
 
     public function getId(): ?int
     {
@@ -77,12 +79,12 @@ class Feedback
         return $this;
     }
 
-    public function getRating(): ?int
+    public function getRating(): ?float
     {
         return $this->rating;
     }
 
-    public function setRating(int $rating): static
+    public function setRating(float $rating): static
     {
         $this->rating = $rating;
 

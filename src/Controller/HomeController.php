@@ -30,7 +30,7 @@ class HomeController extends AbstractController
         
         $openingHours = $this->em->getRepository(OpeningHour::class)->findAll();
 
-        $feedbacks = $this->em->getRepository(Feedback::class)->findBy([], ['created_at' => 'DESC'], 3);
+        $feedbacks = $this->em->getRepository(Feedback::class)->findBy(['approved' => true], ['createdAt' => 'DESC'], 3);
 
 
         $feedback = new Feedback();

@@ -26,7 +26,7 @@ class FeedbackCrudController extends AbstractCrudController
             IntegerField::new('rating')
                 ->setHelp('Note entre 0 sur 5'),
             BooleanField::new('approved'),
-            DateTimeField::new('created_at')->onlyOnDetail()
+            DateTimeField::new('createdAt', 'Envoyé le')->onlyOnDetail()
         ];
     }
     
