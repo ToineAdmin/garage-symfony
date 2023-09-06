@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Service;
 use App\Controller\Admin\CarCrudController;
 use App\Controller\Admin\UserCrudController;
+use App\Entity\Feedback;
 use App\Entity\OpeningHour;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,6 +40,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToUrl('Accueil du site', 'fas fa-home', '/');
         yield MenuItem::linkToUrl('Mon compte', 'fas fa-house-user', '/compte');
         yield MenuItem::linkToCrud('Voitures', 'fas fa-car', Car::class);
+        yield MenuItem::linkToCrud('Avis', 'fas fa-comment', Feedback::class);
         if ($this->isGranted('ROLE_ADMIN')) {
             yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
             yield MenuItem::linkToCrud('Services', 'fas fa-wrench', Service::class);

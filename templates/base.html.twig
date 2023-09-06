@@ -71,7 +71,7 @@
 									ans !<br/>
 									!<br/>
 									<a href="{{ path('occasion') }}" class="btn  btn-danger my-2">Nos occasions</a>
-									<a href="#contact" class="btn btn-primary my-2">Nous contacter</a>
+									<a href="{{ path('contact') }}" class="btn btn-primary my-2">Nous contacter</a>
 								</p>
 							</div>
 						</div>
@@ -142,6 +142,39 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- SECTION Feedbacks !-->
+				<section id="feedbacks" class="mt-5">
+					<div
+						class="container">
+						<!-- Titre de la section -->
+						<div class="row mb-4">
+							<h2 class="text-center">Avis récents</h2>
+						</div>
+
+						<!-- Lignes des feedbacks -->
+						<div class="row justify-content-center">
+							{% for feedback in feedbacks %}
+								<div class="feedback col-md-3 mb-3 mx-2">
+									<div class="card-header">
+										<h3>{{ feedback.name }}</h3>
+									</div>
+									<div class="card-body">
+										<p>{{ feedback.comment }}</p>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+
+						<!-- Formulaire de feedback -->
+						<div class="row justify-content-center">
+							<div class="feedback-form col-md-3 mt-5">
+								<h4>Laissez votre avis</h4>
+								{{ form(form) }}
+							</div>
+						</div>
+					</div>
+				</section>
 
 
 			</main>
