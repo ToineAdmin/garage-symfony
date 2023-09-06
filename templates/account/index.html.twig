@@ -37,12 +37,20 @@
 				</div>
 			{% endif %}
 			<div class="col-md-4">
-				<a href="#" class="account-item text-center btn-relief">
+				<a href="{{ path('admin') }}" class="account-item text-center btn-relief">
 					<img src="{{ asset('assets/img/user-interface.png') }}" alt="Gérer les avis clients"><br/>
 					<span>Gérer les avis</span>
 				</a>
+				{# Affichez la notification si le nombre d'avis non approuvés est supérieur à zéro #}
+				{% if feedbackCount > 0 %}
+					<div class="notification d-flex justify-content-center mt-3 ms-2">
+						<span class="badge text-bg-warning">
+							avis en attente de validation.
+							<span class="badge text-bg-secondary">{{ feedbackCount }}</span>
+						</span>
+					</div>
+				{% endif %}
 			</div>
-
 		</div>
 
 	</div>
