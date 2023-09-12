@@ -20,7 +20,7 @@
 			<div class="container">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					<a href="{{ path('home')}}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-						Garage V.PARROT
+						Garage V. PARROT
 					</a>
 
 					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -62,12 +62,11 @@
 					<div class="py-5 text-center container accueil">
 						<div class="row py-lg-5">
 							<div class="col-lg-6 col-md-8 mx-auto">
-								<h1 class="fw-light">Garage V.PARROT</h1>
-								<p class="lead text-body-secondary">
+								<h1 class="fw-light">Garage V. PARROT</h1>
+								<p class="lead text-body-secondary" data-controller="year">
 									Un garage à l'écoute, compétent et disponible depuis
-									<span id="yearsActive"></span>
+									<span data-year-target="active" id="yearsActive"></span>
 									ans !<br/>
-									!<br/>
 									<a href="{{ path('occasion') }}" class="btn  btn-danger my-2">Nos occasions</a>
 									<a href="{{ path('contact') }}" class="btn btn-primary my-2">Nous contacter</a>
 								</p>

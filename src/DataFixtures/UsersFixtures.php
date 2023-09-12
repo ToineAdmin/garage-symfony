@@ -42,7 +42,10 @@ class UsersFixtures extends Fixture
             $employee->setEmail($faker->safeEmail);
             $employee->setLastname($faker->lastName);
             $employee->setFirstname($faker->firstName);
-            $employee->setJob('Chef d\'atelier');
+            
+            $jobs = ['Mécanicien', 'Secrétaire', 'Commercial'];
+            $employee->setJob($faker->randomElement($jobs));
+            
             $employee->setDescription(implode(' ', $faker->sentences($nb = rand(2, 3))));
             $employee->setPassword($this->passwordEncoder->hashPassword($employee, 'employe' . ($i + 1)));
             $employee->setRoles(['ROLE_USER']);
@@ -50,10 +53,9 @@ class UsersFixtures extends Fixture
             $employee->setCreatedAt(new \DateTimeImmutable('now'));
             $manager->persist($employee);
         }
-
-
-
+        
         $manager->flush();
+        
     }
 
 }

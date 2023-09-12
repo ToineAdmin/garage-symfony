@@ -8,6 +8,9 @@ composer install
 
 npm install
 
+npm install -g yarn
+
+
 #BASE DE DONNEES
 
 php bin/console doctrine:database:create

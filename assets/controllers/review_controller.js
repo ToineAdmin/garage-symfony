@@ -1,5 +1,7 @@
 import { Controller } from 'stimulus';
 
+// ADD "SHOW MORE" FUNCTIONALITY
+
 export default class extends Controller {
     static targets = ["toggle", "moreText", "showButton", "feedbackCard"];
 
