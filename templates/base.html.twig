@@ -12,9 +12,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-		<link rel="stylesheet" href="{{asset('assets/css/nouislider.css')}}">
-		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+		{{ encore_entry_link_tags('app') }}
 	</head>
 
 	<body>
@@ -101,7 +99,7 @@
 				<div class="container-fluid bg-light my-5">
 					<div class="row img-center-text">
 						<div class="col-lg-6 col-md-6 col-sm-12 p-0">
-							<img src="{{ asset('assets/img/garage.jpg') }}" alt="photo de garage" class="img-fluid w-100"/>
+							<img src="{{ asset('build/images/garage.jpg') }}" alt="photo de garage" class="img-fluid w-100"/>
 						</div>
 
 						<!-- Colonne Texte et Liste -->
@@ -111,29 +109,29 @@
 							<div class="row mt-4 liste">
 								<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center">
 									<ul class="list-unstyled">
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Renault</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Peugeot</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Citroen</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Vokswagen</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Dacia</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Renault</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Peugeot</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Citroen</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Vokswagen</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Dacia</li>
 									</ul>
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center">
 									<ul class="list-unstyled">
-										<li><img src="{{ asset('assets/img/verifier.png') }}" class="mr-3">Toyota</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Ford</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Opel</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Nissan</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Fiat</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}" class="mr-3">Toyota</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Ford</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Opel</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Nissan</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Fiat</li>
 									</ul>
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center">
 									<ul class="list-unstyled">
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Mercedes</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Audi</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">BMW</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Kia</li>
-										<li><img src="{{ asset('assets/img/verifier.png') }}">Hyundai</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Mercedes</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Audi</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">BMW</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Kia</li>
+										<li><img src="{{ asset('build/images/verifier.png') }}">Hyundai</li>
 									</ul>
 								</div>
 							</div>
@@ -144,7 +142,8 @@
 				<section id="feedbacks" class="mt-5">
 					<div class="container">
 						<div class="row mb-4">
-							<h2 class="text-center">Votre avis compte pour nous ! </h2>
+							<h2 class="text-center">Votre avis compte pour nous !
+							</h2>
 						</div>
 						<!-- Lignes des feedbacks -->
 						<div class="row justify-content-center">
@@ -156,14 +155,14 @@
 										</div>
 										<div class="card-body">
 											<div class="feedback-content">
-												<p class="feedback-text">
+												<p class="feedback-text" data-controller="review" data-review-target="feedbackCard">
 													{% set words = feedback.comment|split(' ') %}
 													{% if words|length > 20 %}
 														{{ words|slice(0, 20)|join(' ') }}...
-														<button class="toggle-text" data-action="show">voir plus</button>
-														<span class="more-text">
+														<button class="toggle-text" data-action="review#toggleText" data-type="show" data-review-target="showButton">voir plus</button>
+														<span class="more-text" data-review-target="moreText">
 															{{ words|slice(20)|join(' ') }}
-															<button class="toggle-text" data-action="hide">voir moins</button>
+															<button class="toggle-text" data-action="review#toggleText" data-type="hide" data-review-target="toggle">voir moins</button>
 														</span>
 													{% else %}
 														{{ feedback.comment }}
@@ -173,7 +172,7 @@
 											</div>
 											<div class="rating">
 												<p class="mb-0">{{ feedback.rating }}/5</p>
-												<img src="{{ asset('assets/img/star.png') }}" alt="étoile" />
+												<img src="{{ asset('build/images/star.png') }}" alt="étoile"/>
 											</div>
 
 											<p class="secondary-text text-muted bottom-0">
@@ -196,8 +195,7 @@
 						</div>
 					</div>
 				</section>
-
-
+				<div data-controller="counter"></div>
 			</main>
 		{% endblock %}
 
@@ -245,10 +243,7 @@
 				</div>
 			</div>
 		</footer>
+		{{ encore_entry_script_tags('app') }}
 
-		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-		<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
-		<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
-		<script src="{{asset('assets/js/script.js')}}"></script>
 	</body>
 </html></body></html></body></html>

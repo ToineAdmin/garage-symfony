@@ -17,28 +17,28 @@
 		<div class="row account-item-row mb-5">
 			<div class="col-md-4">
 				<a href="{{ path('account_password') }}" class="account-item text-center btn-relief">
-					<img src="{{ asset('assets/img/cadenas.png') }}" alt="Modifier mon mot de passe"><br/>
+					<img src="{{ asset('build/images/cadenas.png') }}" alt="Modifier mon mot de passe"><br/>
 					<span>Modifier mon mot de passe</span>
 				</a>
 			</div>
 			{% if is_granted('ROLE_ADMIN') %}
 				<div class="col-md-4">
 					<a href="{{ path('admin') }}" class="account-item text-center btn-relief">
-						<img src="{{ asset('assets/img/navigateur.png') }}" alt="Gérer votre site"><br/>
+						<img src="{{ asset('build/images/navigateur.png') }}" alt="Gérer votre site"><br/>
 						<span>Gérer votre site</span>
 					</a>
 				</div>
 			{% elseif is_granted('ROLE_USER') %}
 				<div class="col-md-4">
 					<a href="{{ path('admin') }}" class="account-item text-center btn-relief">
-						<img src="{{ asset('assets/img/voiture.png') }}" alt="Gérer les voitures"><br/>
+						<img src="{{ asset('build/images/voiture.png') }}" alt="Gérer les voitures"><br/>
 						<span>Gérer les voitures</span>
 					</a>
 				</div>
 			{% endif %}
 			<div class="col-md-4">
 				<a href="{{ path('admin') }}" class="account-item text-center btn-relief">
-					<img src="{{ asset('assets/img/user-interface.png') }}" alt="Gérer les avis clients"><br/>
+					<img src="{{ asset('build/images/user-interface.png') }}" alt="Gérer les avis clients"><br/>
 					<span>Gérer les avis</span>
 				</a>
 				{# Affichez la notification si le nombre d'avis non approuvés est supérieur à zéro #}
