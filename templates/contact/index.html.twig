@@ -4,8 +4,11 @@
 {% endblock %}
 
 {% block content %}
-	<div class="container-fluid custom-container">
-		<div class="row .contact-row">
+	<div class="container-fluid contact-custom-container">
+		<h2 class="text-center">Besoin d'un renseignement ?
+		</h2>
+		<div
+			class="row contact-row">
 			<!-- Première colonne -->
 			<div class="col-md-4 d-flex justify-content-center">
 				<ul class="features-list text-center">
@@ -16,10 +19,15 @@
 						</div>
 						<p class="mt-2">
 							Mobile:
-							<strong>06 12 78 55 **</strong><br>
+							<a href="tel:06127855**">
+								<strong>06 12 78 55 **</strong>
+							</a><br>
 							Assistance:
-							<strong>03 74 52 86 **</strong><br>
+							<a href="tel:03745286**">
+								<strong>03 74 52 86 **</strong>
+							</a><br>
 						</p>
+
 					</li>
 				</ul>
 			</div>
@@ -50,16 +58,18 @@
 						</div>
 						<p class="mt-2">Du lundi au Vendredi
 							<br>au
-							<strong>03 74 52 86 **</strong>
+							<a href="tel:03745286**">
+								<strong>03 74 52 86 **</strong>
+							</a><br>
 						</p>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="row d-flex justify-content-center mt-5 mb-5">
-			<div class="col-md-4">
-				<div class="glass-card">
-					<h5 class="text-center">Écrivez nous !</h5>
+		<div class="row form-row mt-5 mb-5 d-flex justify-content-center">
+			<div class="col-lg-4 col-md-6">
+				<div class="glass-card text-center">
+					<h5>Écrivez nous !</h5>
 					{{ form_start(form) }}
 					<div class="row mt-5">
 						<div class="col-md-6">

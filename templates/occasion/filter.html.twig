@@ -1,37 +1,40 @@
-{{ form_start(form, {attr: {class:'filter'}} ) }}
-    {{ form_row(form.q) }}
+{{ form_start(form, {attr: {class:'filter'}}) }}
+{{ form_row(form.q) }}
+<div data-controller="slider">
+	<h5>Prix €</h5>
+	<div class="row">
+		<div class="col-md-6">
+			{{ form_row(form.minPrice) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.maxPrice) }}
+		</div>
+	</div>
+	<div id="price-slider" data-target="slider.price"></div>
 
-    <h5>Prix €</h5>
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_row(form.minPrice) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_row(form.maxPrice) }}
-        </div>
-    </div>
-    <div id="price-slider"></div>
-    <h5 class="mt-3">Kilomètres</h5>
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_row(form.minMiles) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_row(form.maxMiles) }}
-        </div>
-    </div>
-    <div id="miles-slider"></div>
-    <h5 class="mt-3">Année</h5>
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_row(form.minYear) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_row(form.maxYear) }}
-        </div>
-    </div>
-    <div id="year-slider"></div>
+	<h5 class="mt-3">Kilomètres</h5>
+	<div class="row">
+		<div class="col-md-6">
+			{{ form_row(form.minMiles) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.maxMiles) }}
+		</div>
+	</div>
+	<div id="miles-slider" data-target="slider.miles"></div>
 
+	<h5 class="mt-3">Année</h5>
+	<div class="row">
+		<div class="col-md-6">
+			{{ form_row(form.minYear) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.maxYear) }}
+		</div>
+	</div>
+	<div id="year-slider" data-target="slider.year"></div>
 
-    <button type="submit" class="btn btn-primary mt-3 w-100">Filtrer</button>
+	<button type="submit" class="btn btn-primary mt-3 w-100">Filtrer</button>
+</div>
 {{ form_end(form) }}
+

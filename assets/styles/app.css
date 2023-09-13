@@ -6,8 +6,6 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
-
-
 /* CAR */
 
 .card {
@@ -88,15 +86,9 @@ body{
     transform: translateY(-2px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
 }
-
-
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.navbar-item-custom a{
+    color:white !important;
+    text-decoration: none;
 }
 
 @media(min-width: 768px) {
@@ -451,15 +443,65 @@ ul, li {
 .contact-row{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 100px;
+    width: 100%;
+    margin: 0;
 }
 
-.custom-container {
-    max-width: 80%; 
-    margin-top: 150px;
+
+
+.contact-row > div {
+    border-right: 2px solid rgba(0, 0, 0, 0.26);
+    transition: 0.3s ease-out;
+    padding:0;
+    margin:0;
 }
+
+@media (max-width: 768px){
+    .contact-row > div {
+        border-right:none;
+    }
+    .form-row{
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.contact-row > div:hover{
+    transform: translateY(-5px);
+}
+
+.features-list a {
+    text-decoration: none; /* Supprime le soulignement */
+    color: inherit; 
+}
+
+.features-list a:hover, .features-list a:focus {
+    text-decoration: none;
+}
+
+
+
+.contact-custom-container h2 {
+    margin-bottom: 5rem;
+}
+
+.contact-custom-container {
+    margin-top: 100px;
+    padding: 50px 0;
+}
+
 
 .features-list {
     padding-left: 0;
+}
+
+.features-list h5 {
+    color: #BB2D3B;
+    border-bottom: 2px solid #BB2D3B;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 
@@ -472,9 +514,19 @@ ul, li {
     backdrop-filter: blur(10px);  /* effet de flou pour le glassmorphism */
     transition: all 0.3s ease-in-out;
 }
+.glass-card h5 {
+    border-bottom: 2px solid #BB2D3B;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+}
 
 .glass-card:hover {
     box-shadow: 4px 4px 7px #c9c9c9, -4px -4px 7px #ffffff;
+}
+#contact_submit {
+    width: 100%;
 }
 
 /* FEEDBACK */
@@ -515,7 +567,7 @@ ul, li {
     position: relative;
     padding-bottom: 30px; 
     border-radius: 0 0 0.5rem 0.5rem;
-    flex-grow: 1; /* Permet au card-body de grandir pour remplir l'espace restant */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -573,6 +625,51 @@ button.toggle-text:focus {
     background-color: #212529;
     color:white;
     padding-top: 25px;
+}
+
+
+/*  TEAM  */
+
+
+.img-container {
+    position: relative;
+}
+
+.team-container{
+    min-height: 60vh;
+}
+
+.paint-bg {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.img-container h2, .img-container h5, .img-container p {
+    color: black;
+}
+
+.img-container h2 {
+    font-size: 24px;
+}
+
+.img-container h5 {
+    font-size: 18px;
+}
+
+/* LOGIN */
+
+.login-container {
+    height: 60vh;
+    margin-left:0;
+    margin-right:0;
 }
 
 

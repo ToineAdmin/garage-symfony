@@ -1,7 +1,6 @@
 import './styles/app.css';
 import './nouislider.min.js';
 import './bootstrap.js';
-import './script';
 import './styles/nouislider.css';
 import 'bootstrap';
 

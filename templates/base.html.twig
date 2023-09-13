@@ -40,11 +40,9 @@
 
 					<div class="text-end navbar-item-custom">
 						{% if app.user %}
-							<a href="{{ path('account')}}">Mon compte
-								<small>({{app.user.firstname}})</small>
+							<a href="{{ path('account')}}" class="btn btn-primary">Mon compte
 							</a>
-							|
-							<a href="{{ path('app_logout')}}">Déconnexion</a>
+							<a href="{{ path('app_logout')}}" class="btn btn-danger">Déconnexion</a>
 						{% else %}
 							<a href="{{ path('app_login')}}" class="btn btn-danger">Connexion</a>
 

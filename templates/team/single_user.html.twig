@@ -1,6 +1,8 @@
-<div class="img-container profile-header text-center">
-    <img src="{{ asset('uploads/' ~ user.image) }}" class="img-fluid img-rounded" alt="{{ user.firstname }}" />
-    <h2 class="fw-normal mt-3">{{user.firstname}}</h2>
-    <h5 class="fw-normal">{{user.job}}</h5>
-    <p class="text-center">{{ user.description }}</p>
+<div class="img-container profile-header text-center paint-bg">
+    <div>
+        <img src="{{ asset('uploads/' ~ user.image) }}" class="profile-pic" alt="{{ user.firstname }}" />
+        <h2 class="fw-normal mt-3">{{user.firstname}}</h2>
+        <h5 class="fw-normal">{{user.job}}</h5>
+        <p class="text-center">{{ user.description }}</p>
+    </div>
 </div>
