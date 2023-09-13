@@ -2,6 +2,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
+    "@popperjs/core": "^2.11.8",
     "@symfony/stimulus-bridge": "^3.2.2",
     "core-js": "^3.32.2",
     "nouislider": "^15.7.1",

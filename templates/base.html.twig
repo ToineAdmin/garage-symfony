@@ -17,7 +17,7 @@
 
 	<body>
 		<header class="p-3 text-bg-dark">
-			<div class="container">
+			<div class="container" data-controller="nav">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					<a href="{{ path('home')}}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
 						Garage V. PARROT
@@ -147,14 +147,14 @@
 						<!-- Lignes des feedbacks -->
 						<div class="row justify-content-center">
 							{% for feedback in feedbacks %}
-								<div class="feedback col-sm-12 col-lg-4 col-md-6 mb-4">
-									<div class="feedback-card border-0 shadow-sm">
+								<div class="feedback col-sm-12 col-lg-4 col-md-6 mb-4" data-controller="review">
+									<div class="feedback-card" data-review-target="feedbackCard" border-0 shadow-sm">
 										<div class="card-header bg-primary text-white">
 											<h6>{{ feedback.name }}</h6>
 										</div>
 										<div class="card-body">
 											<div class="feedback-content">
-												<p class="feedback-text" data-controller="review" data-review-target="feedbackCard">
+												<p class="feedback-text" data-review-target="feedbackText">
 													{% set words = feedback.comment|split(' ') %}
 													{% if words|length > 20 %}
 														{{ words|slice(0, 20)|join(' ') }}...

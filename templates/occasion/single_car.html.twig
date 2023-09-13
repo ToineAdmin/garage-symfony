@@ -18,13 +18,13 @@
 					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
-			<div class="card-body text-center">
+			<div class="card-body text-center" data-controller="car">
 				<h5 class="card-title">{{ car.name }}</h5>
 				<p class="card-text">Marque:
 					{{ car.brand }}</p>
 				<p class="card-text text-light-bold">{{ car.fuel }}</p>
 				<p class="card-text text-light-bold">{{ (car.price / 100)|number_format(0, '.', '') }}€</p>
-				<div class="details" id="details_{{ loop.index }}" style="display: none;">
+				<div class="details" data-car-target="details" data-details-target-id="{{ loop.index }}" style="display: none;">
 					<div class="table-container">
 						<table class="table">
 							<tbody>
@@ -70,7 +70,9 @@
 						</table>
 					</div>
 				</div>
-				<button class="btn btn-primary toggle-button" id="toggle-button_{{ loop.index }}" onclick="toggleDetails({{ loop.index }})">En savoir plus</button>
+				<button class="btn btn-primary toggle-button" data-action="click->car#toggleDetails" data-car-target="toggleButton" data-details-target-id="{{ loop.index }}">
+					En savoir plus
+				</button>
 			</div>
 		</div>
 	{% endfor %}

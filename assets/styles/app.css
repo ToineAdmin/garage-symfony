@@ -6,6 +6,8 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
+
+
 /* CAR */
 
 .card {
@@ -58,23 +60,33 @@ body{
 
 /* NAVBAR */
 
-
-.navbar-item-custom, .navbar-item-custom a{
-    color: white !important;
-} 
-
-.shopping-cart{
-    height:20px;
-    padding-left:15px;
+.nav > li:not(:last-child) {
+    margin-right: 10px; 
+    height:24px;
 }
 
-.footer-custom{
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    background-color: #212529;
-    color:white;
-    padding-top: 25px;
+.nav > li:first-child {
+    margin-left: 10px; 
+}
+
+.nav-link {
+    color: white; 
+    border-radius: 30px; 
+    transition: all 0.3s ease;
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25); 
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.nav-link:not(.active):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
 }
 
 
@@ -446,6 +458,10 @@ ul, li {
     margin-top: 150px;
 }
 
+.features-list {
+    padding-left: 0;
+}
+
 
 .glass-card {
     border-radius: 15px;
@@ -546,6 +562,17 @@ button.toggle-text:focus {
     display: flex;
     align-items: center; 
     gap: 5px;
+}
+
+/* FOOTER */
+
+.footer-custom{
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    background-color: #212529;
+    color:white;
+    padding-top: 25px;
 }
 
 

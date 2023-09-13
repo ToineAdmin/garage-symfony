@@ -3,6 +3,8 @@ import './nouislider.min.js';
 import './bootstrap.js';
 import './script';
 import './styles/nouislider.css';
+import 'bootstrap';
+
 
 const imagesContext = require.context('./images', false, /\.(png|jpe?g|svg)$/);
 imagesContext.keys().forEach(imagesContext);
