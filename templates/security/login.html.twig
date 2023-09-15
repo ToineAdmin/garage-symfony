@@ -3,7 +3,8 @@
 {% block title %}Se connecter - Garage V.PARROT{% endblock %}
 
 {% block content %}
-<div class="block-small login-container container-fluid mb-5 mt-5">
+<div class=" login-container container-fluid mb-5 mt-5">
+<div class="container block-small">
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -28,11 +29,12 @@
                value="{{ csrf_token('authenticate') }}"
         >
 
-        <button class="btn btn-block btn-primary mt-3" type="submit">
+        <button class="btn login-btn btn-primary mt-3" type="submit">
             Se connecter
         </button>
         <hr>
         <p class="text-center"><a href="{{ path ('reset_password')}}">Mot de passe oublié</a></p>
     </form>
+</div>
 </div>
 {% endblock %}

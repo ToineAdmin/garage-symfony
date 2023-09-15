@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Trait\CreatedAtTrait;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Service
 {
 

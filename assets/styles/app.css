@@ -464,7 +464,7 @@ ul, li {
     .form-row{
         width: 100%;
         margin: 0;
-    }
+    } 
 }
 
 .contact-row > div:hover{
@@ -664,12 +664,22 @@ button.toggle-text:focus {
     font-size: 18px;
 }
 
+
 /* LOGIN */
+
 
 .login-container {
     height: 60vh;
-    margin-left:0;
-    margin-right:0;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.login-btn{
+    display: block;
+    width: 100%;
 }
 
 

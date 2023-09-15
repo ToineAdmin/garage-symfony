@@ -3,11 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -35,34 +36,47 @@ class UserCrudController extends AbstractCrudController
             return ['Default', 'Creation'];
         }
 
-
         return ['Default', 'Edition'];
     }
 
 
     public function configureFields(string $pageName): iterable
     {
+
+
+        $plainPassword = TextField::new('plainPassword', 'Mot de passe')->onlyOnForms();
+        $imageField = ImageField::new('image')
+            ->setBasePath('uploads/')
+            ->setFormTypeOptions([
+                "multiple" => false,
+                "attr" => [
+                    "accept" => "image/x-png,image/gif,image/jpeg"
+                ],
+        ])
+        ->setUploadDir('public/uploads/')
+        ->setUploadedFileNamePattern('[randomhash].[extension]');
+
+
+        //Modifie le comportement des field lors de la création ou de l'édition
+
+
+        if ($pageName === Crud::PAGE_NEW) {
+            $plainPassword->setRequired(true);
+            $imageField->setRequired(true);
+        } else if ($pageName === Crud::PAGE_EDIT) {
+            $plainPassword->setRequired(false)
+                ->setHelp('Laisser vide si vous ne souhaitez pas le changer');
+            $imageField->setRequired(false);
+        }
+
         return [
 
             TextField::new('email', 'Email'),
             TextField::new('Lastname', 'Nom de famille'),
             TextField::new('Firstname', 'Prénom'),
-            TextField::new('plainPassword', 'Mot de passe')
-                ->onlyWhenCreating()
-                ->setRequired(false)
-                ->setHelp('Laisser vide si vous ne souhaitez pas le changer'),
+            $plainPassword,
             TextField::new('job', 'Métier'),
-            ImageField::new('image')
-                ->setBasePath('uploads/')
-                ->setFormTypeOptions([
-                    "multiple" => false,
-                    "attr" => [
-                        "accept" => "image/x-png,image/gif,image/jpeg"
-                    ],
-                ])
-                ->setUploadDir('public/uploads/')
-                ->setUploadedFileNamePattern('[randomhash].[extension]')
-                ->setRequired(true),
+            $imageField,
             TextareaField::new('description', 'Description')
 
         ];

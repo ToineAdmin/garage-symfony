@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
@@ -37,9 +38,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    /**
-     * @Assert\NotBlank(groups={"Creation"})
-     */
+
+    #[Assert\NotBlank(
+        message: "Le mot de passe ne doit pas être vide.",
+        groups: ["Creation"]
+    )]
     private ?string $plainPassword = null;
 
     #[ORM\Column(length: 255)]
