@@ -5,6 +5,7 @@
     "@popperjs/core": "^2.11.8",
     "@symfony/stimulus-bridge": "^3.2.2",
     "core-js": "^3.32.2",
+    "jquery": "^3.7.1",
     "nouislider": "^15.7.1",
     "stimulus": "^3.2.2",
     "watch": "^1.0.2"

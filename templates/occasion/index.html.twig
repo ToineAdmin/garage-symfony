@@ -12,7 +12,9 @@
 					{% include 'occasion/filter.html.twig' with { form : form } only %}
 				</div>
 				<div class="col-md-9">
-					{% include 'occasion/single_car.html.twig' %}
+                    <div id="idConteneurResultats">
+					    {% include 'occasion/single_car.html.twig' %}
+                    </div>
 					<div class="mt-5 d-flex justify-content-center">
 						{{ knp_pagination_render(cars)}}
 					</div>

@@ -29,8 +29,8 @@ class Car
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $miles = null;
+    #[ORM\Column]
+    private ?int $miles = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -55,7 +55,7 @@ class Car
     #[ORM\Column(length: 255)]
     private ?string $fuel = null;
 
-    #[ORM\Column(type: "integer")]
+    #[ORM\Column]
     #[Assert\Range(
         min: 1995,
         max: "now",

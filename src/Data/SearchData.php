@@ -4,47 +4,19 @@ namespace App\Data;
 
 class SearchData
 {
-    /**
-     * @var string
-     */
-    public $q ='';
+    public ?string $q = '';
 
-    /**
-     * @var null|integer
-     */
-    public $minPrice;
+    public ?int $minPrice = null;
 
-    /**
-     * @var null|integer
-     */
-    public $maxPrice;
+    public ?int $maxPrice = null;
 
-    /**
-     * @var null|integer
-     */
-    public $minMiles;
+    public ?int $minMiles = null;
 
-    /**
-     * @var null|integer
-     */
-    public $maxMiles;
+    public ?int $maxMiles = null;
 
-        /**
-     * @var null|integer
-     */
-    public $minYear;
+    public ?int $minYear = null;
 
-    /**
-     * @var null|integer
-     */
-    public $maxYear;
+    public ?int $maxYear = null;
 
-
-    /**
-     * @var integer
-     */
-    public $page = 1;
-
+    public int $page = 1;
 }
-
-

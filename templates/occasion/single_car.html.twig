@@ -23,15 +23,15 @@
 				<p class="card-text">Marque:
 					{{ car.brand }}</p>
 				<p class="card-text text-light-bold">{{ car.fuel }}</p>
-				<p class="card-text text-light-bold">{{ (car.price / 100)|number_format(0, '.', '') }}€</p>
+				<p class="card-text text-light-bold">{{ (car.price / 100)|number_format(0, '.', ' ') }}€</p>
 				<div class="details" data-car-target="details" data-details-target-id="{{ loop.index }}" style="display: none;">
 					<div class="table-container">
 						<table class="table">
 							<tbody>
 								<tr>
 									<th scope="col">Kilomètres</th>
-									<td>{{ car.miles }}
-										km</td>
+									<td>{{ car.miles|number_format(0, '.', ' ') }} km</td>
+
 								</tr>
 								<tr>
 									<th scope="col">Année de mise en circulation</th>

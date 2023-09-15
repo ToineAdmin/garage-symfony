@@ -27,18 +27,21 @@ class OccasionController extends AbstractController
     {
         $data = new SearchData;
         $data->page = $request->get('page', 1);
-    
+
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
 
-        $params = [
-            'cars' => $this->em->getRepository(Car::class)->findSearch($data),
-            'form' => $form->createView()
-        ];
+        $cars = $this->em->getRepository(Car::class)->findSearch($data);
 
-    
-    
-        return $this->render('occasion/index.html.twig', $params);
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('occasion/single_car.html.twig', [
+                'cars' => $cars
+            ]);
+        }
+
+        return $this->render('occasion/index.html.twig', [
+            'cars' => $cars,
+            'form' => $form->createView()
+        ]);
     }
-    
 }
