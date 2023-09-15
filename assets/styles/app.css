@@ -11,16 +11,39 @@ h1,h2,h3,h4,h5,h6{
 .card {
     transition: max-height 0.5s ease;
     overflow: hidden;
-    height: 550px;
+    height: 630px;
     min-width: 310px;
-    max-width: 20vw;
+    max-width: 22vw;
     padding: 0;
 }
+
+@media(max-width: 992px){
+    .card{
+        max-width: 50vw;
+    }
+}
+
+@media(max-width: 767px){
+    .card{
+        max-width: 100vw;
+    }
+
+    .filter-col{
+        margin-bottom: 50px !important;
+    }
+}
+
+
 
 .card.active {
     height: auto;
     font-weight: normal;
 
+}
+
+.badge-price {
+    padding: 10px 20px;
+    font-size: 1.15rem; 
 }
 
 .table-container {
@@ -57,7 +80,15 @@ body{
 
 
 /* NAVBAR */
+#logo {
+    width:120px;
+    margin-right: 20px;
+    transition: 0.3s ease-in-out;
+}
 
+#logo:hover{
+    transform: translateY(-3px);
+}
 .nav > li:not(:last-child) {
     margin-right: 10px; 
     height:24px;
@@ -71,6 +102,7 @@ body{
     color: white; 
     border-radius: 30px; 
     transition: all 0.3s ease;
+    font-size: 1.3rem;
 }
 
 .nav-link.active {
@@ -132,44 +164,7 @@ body{
 }
 
 
-/* PANIER  */
 
-.cart-container{
-    margin-bottom: 125px;
-}
-
-.img-cart{
-    height:75px;
-}
-
-.total-cart p{
-    font-weight: bold;
-}
-
-/* CONNECTION */
-
-.block-small{
-    max-width: 400px;
-    margin:0 auto;
-}
-
-/* PANNIER */
-
-.form-check{
-    background-color: #f4f8ff;
-    padding : 20px 65px;
-    margin-top: 7px;
-}
-
-.col-form-label{
-    font-weight: bold;
-}
-
-.order-summary{
-    background-color: #f4f8ff;
-    padding : 20px;
-    margin-top: 22px;
-}
 
 /* MON COMPTE */
 .container.account {
