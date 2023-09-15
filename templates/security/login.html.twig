@@ -1,40 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Se connecter - Garage V.PARROT{% endblock %}
+{% block title %}Se connecter - Garage V.PARROT
+{% endblock %}
 
 {% block content %}
-<div class=" login-container container-fluid mb-5 mt-5">
-<div class="container block-small">
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-        {% for message in app.flashes ('notice') %}
-            <div class="alert alert-info">{{ message }}</div>
-        {% endfor %}
+	<div class=" login-container container-fluid mb-5 mt-5">
+		<div class="container connect-form block-small">
 
-        {% if app.user %}
-            <div class="mb-3">
-                Vous êtes connecté en tant que  {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            </div>
-        {% endif %}
+			{% if app.user %}
+				<div class="mb-3 login-text text-center">
+					Vous êtes connecté en tant que
+					{{ app.user.userIdentifier }}.
+					<a href="{{ path('account')}}" class="btn btn-primary mt-5">Mon compte
+					</a>
+					<a href="{{ path('app_logout')}}" class="btn btn-danger mt-5">Déconnexion</a>
+				</div>
+			{% else %}
 
-        <h1 class="h3 mb-3 font-weight-normal text-center">Connectez-vous</h1>
-        <label for="inputEmail">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Votre email" required autofocus>
-        <label for="inputPassword">Mot de passe</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Votre mot de passse" required>
+				<form method="post">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+					{% for message in app.flashes ('notice') %}
+						<div class="alert alert-info">{{ message }}</div>
+					{% endfor %}
 
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
+					<h1 class="h3 mb-3 font-weight-normal text-center">Connectez-vous</h1>
+					<label for="inputEmail">Email</label>
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Votre email" required autofocus>
+					<label for="inputPassword">Mot de passe</label>
+					<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Votre mot de passse" required>
 
-        <button class="btn login-btn btn-primary mt-3" type="submit">
-            Se connecter
-        </button>
-        <hr>
-        <p class="text-center"><a href="{{ path ('reset_password')}}">Mot de passe oublié</a></p>
-    </form>
-</div>
-</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<button class="btn login-btn btn-primary mt-3" type="submit">
+						Se connecter
+					</button>
+					<hr>
+					<p class="text-center">
+						<a href="{{ path ('reset_password')}}">Mot de passe oublié</a>
+					</p>
+				</form>
+
+			{% endif %}
+
+		</div>
+	</div>
 {% endblock %}

@@ -9,22 +9,40 @@ h1,h2,h3,h4,h5,h6{
 /* CAR */
 
 .card {
-    transition: max-height 0.5s ease;
     overflow: hidden;
     height: 630px;
     min-width: 310px;
     max-width: 22vw;
     padding: 0;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05); /* Ombre portée initiale */
+    transform: perspective(1000px) rotateX(5deg); /* Légère inclinaison pour un effet 3D */
+    transform-origin: center bottom; /* Point d'origine de la transformation */
+    transition: 0.3s ease-out, transform 0.3s ease-out; /* Ajout de la transition pour transform */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s ease-out;
 }
 
+
+.card:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 3px 5px rgba(0, 0, 0, 0.1); /* Ombre portée plus prononcée lors du survol */
+    transform: perspective(1000px) rotateX(0deg); /* Redresse la carte pour la mettre à plat lors du survol */
+}
+
+
 @media(max-width: 992px){
-    .card{
+    .card, .card:hover {
+        box-shadow: none; /* Annule l'ombre portée */
+        transform: none; /* Annule la transformation */
         max-width: 50vw;
+        border: 1px solid rgba(0, 0, 0, 0.192);
     }
 }
 
 @media(max-width: 767px){
-    .card{
+    .card {
         max-width: 100vw;
     }
 
@@ -33,17 +51,16 @@ h1,h2,h3,h4,h5,h6{
     }
 }
 
-
-
 .card.active {
     height: auto;
     font-weight: normal;
-
 }
 
 .badge-price {
     padding: 10px 20px;
     font-size: 1.15rem; 
+    border-radius: 50px;  /* rend les badges plus arrondis */
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .table-container {
@@ -55,12 +72,14 @@ h1,h2,h3,h4,h5,h6{
     width: 100%;
     height: 300px;
     object-fit: cover;
-
+    border-top-left-radius: 10px;  /* arrondit les coins supérieurs */
+    border-top-right-radius: 10px;
 }
 
 .occas-container {
     gap: 30px;
 }
+
 
 /* Qui sommes nous */
 
@@ -76,10 +95,17 @@ h1,h2,h3,h4,h5,h6{
 
 body{
     position: relative;
+    background-color: whitesmoke;
 }
 
 
 /* NAVBAR */
+
+header{
+    background-color: #121213ec;
+}
+
+
 #logo {
     width:120px;
     margin-right: 20px;
@@ -102,7 +128,7 @@ body{
     color: white; 
     border-radius: 30px; 
     transition: all 0.3s ease;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
 }
 
 .nav-link.active {
@@ -127,40 +153,6 @@ body{
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
-}
-
-
-/* PAGE PRODUITS ET PRODUIT */
-
-.product-item{
-    margin-top: 50px;
-}
-
-.product-item h5{
-    text-transform:uppercase;
-    font-size: 16px;
-    margin-bottom:1px;
-}
-
-.product-item .product-subtitle{
-    font-size: 14px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.product-item .product-price{
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.product-container , .product-page-container{
-    margin-bottom: 125px;
-}
-
-.product-page-price{
-    font-size:18px;
-    font-weight: bold;
-
 }
 
 
@@ -295,6 +287,7 @@ body{
     transform: translateY(-5px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 12px 15px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.411);
 }
 
 
@@ -400,11 +393,11 @@ body{
 /* ACCUEIL */
 
 #home {
-    background-image: url('/assets/images/bg-garage.jpg');
+    background-image: url('/assets/images/bg-garage1.jpg');
     background-size: cover;     
     background-repeat: no-repeat; 
     background-position:30% 60% ; 
-    height: 600px;
+    height: 650px;
     display: flex;
     align-items: center; 
     justify-content: center; 
@@ -522,6 +515,10 @@ ul, li {
 }
 #contact_submit {
     width: 100%;
+}
+
+.brand-container{
+    background-color: white;
 }
 
 /* FEEDBACK */
@@ -676,6 +673,27 @@ button.toggle-text:focus {
     display: block;
     width: 100%;
 }
+
+.connect-form{
+    width: 25vw;
+}
+
+.login-text{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+@media(max-width: 992px){
+    .connect-form{
+        width: 60vw;
+    }
+}
+@media(max-width: 767px){
+    .connect-form{
+        width: 100vw;
+    }
+}
+
 
 
 
