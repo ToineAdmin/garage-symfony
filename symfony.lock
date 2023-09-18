@@ -283,6 +283,12 @@
             "./config/packages/uid.yaml"
         ]
     },
+    "symfony/ux-chartjs": {
+        "version": "v2.11.1"
+    },
+    "symfony/ux-turbo": {
+        "version": "v2.11.2"
+    },
     "symfony/validator": {
         "version": "6.3",
         "recipe": {

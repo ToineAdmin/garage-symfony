@@ -2,17 +2,21 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
+    "@hotwired/turbo": "^7.0.1",
     "@popperjs/core": "^2.11.8",
     "@symfony/stimulus-bridge": "^3.2.2",
+    "chart.js": "^3.4.1",
     "core-js": "^3.32.2",
     "jquery": "^3.7.1",
     "nouislider": "^15.7.1",
     "stimulus": "^3.2.2",
-    "watch": "^1.0.2"
+    "watch": "^0.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.17",
     "@babel/preset-env": "^7.22.15",
+    "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/assets",
+    "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
     "@symfony/webpack-encore": "^4.4.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.1",
