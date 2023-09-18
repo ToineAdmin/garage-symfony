@@ -21,11 +21,11 @@ class FeedbackCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name'),
-            TextareaField::new('comment'),
-            IntegerField::new('rating')
+            TextField::new('name', 'Prénom'),
+            TextareaField::new('comment', 'Commentaire'),
+            IntegerField::new('rating', 'Note')
                 ->setHelp('Note entre 0 sur 5'),
-            BooleanField::new('approved'),
+            BooleanField::new('approved', 'Approuvé'),
             DateTimeField::new('createdAt', 'Envoyé le')->onlyOnDetail()
         ];
     }

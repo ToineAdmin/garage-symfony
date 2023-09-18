@@ -95,7 +95,7 @@ h1,h2,h3,h4,h5,h6{
 
 body{
     position: relative;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 
@@ -485,8 +485,8 @@ ul, li {
 }
 
 .features-list h5 {
-    color: #BB2D3B;
-    border-bottom: 2px solid #BB2D3B;
+    color: #DC3545;
+    border-bottom: 2px solid #DC3545;
     display: inline-block;
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -518,7 +518,7 @@ ul, li {
 }
 
 .brand-container{
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 /* FEEDBACK */

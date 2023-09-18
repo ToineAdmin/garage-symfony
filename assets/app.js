@@ -16,17 +16,19 @@ imagesContext.keys().forEach(imagesContext);
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
-$(document).ready(function() {
+
+//REQUETE AJAX POUR FILTRE
+$(function() {
     $('#filterButton').on('click', function() {
         $.ajax({
             url: '/voiture-occasion',
             method: 'GET',
             data: $('.filter').serialize(),
             success: function(response) {
-                // Mettez à jour le contenu de votre page avec la réponse obtenue.
                 $('#idConteneurResultats').html(response);
             }
         });
     });
 });
+
 
