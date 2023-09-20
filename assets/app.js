@@ -1,9 +1,10 @@
 import './styles/app.css';
-import './nouislider.min.js';
 import './bootstrap.js';
-import './styles/nouislider.css';
 import 'bootstrap';
 import $ from 'jquery';
+import noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';
+
 
 
 

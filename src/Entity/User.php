@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: "app_user")]
 #[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -20,7 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     use CreatedAtTrait;
 
-    
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -101,7 +102,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
@@ -133,14 +133,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->plainPassword;
     }
-    
+
 
     public function setPlainPassword(?string $plainPassword): static
     {
         $this->plainPassword = $plainPassword;
         return $this;
     }
-    
+
 
 
 
@@ -149,8 +149,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function eraseCredentials(): void
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-         $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     public function getJob(): ?string
@@ -243,5 +242,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
+    public function __toString(): string
+    {
+        return $this->Firstname ?: '';
+    }
 }

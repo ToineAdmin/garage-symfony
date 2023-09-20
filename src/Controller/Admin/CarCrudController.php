@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Car;
 use Symfony\Component\Validator\Constraints\Range;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -12,6 +11,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+
 
 class CarCrudController extends AbstractCrudController
 {
@@ -77,7 +78,8 @@ Bluetooth :');
             IntegerField::new('miles', 'Kilométrage'),
             TextareaField::new('description', 'Description'),
             TextareaField::new('caracteristics', 'Caractéristiques'),
-            TextareaField::new('equipements', 'Equipements')
+            TextareaField::new('equipements', 'Equipements'),
+            AssociationField::new('createdBy', 'Créé par')
         ];
     }
 }

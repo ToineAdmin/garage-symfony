@@ -497,7 +497,7 @@ ul, li {
 }
 
 .features-list a {
-    text-decoration: none; /* Supprime le soulignement */
+    text-decoration: none; 
     color: inherit; 
 }
 
@@ -532,11 +532,11 @@ ul, li {
 
 .glass-card {
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.1);  /* un fond semi-transparent */
+    background: rgba(255, 255, 255, 0.1);  
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 20px;
-    box-shadow: 7px 7px 14px #c9c9c9, -7px -7px 14px #ffffff;  /* ombres douces pour l'effet neomorphic */
-    backdrop-filter: blur(10px);  /* effet de flou pour le glassmorphism */
+    box-shadow: 7px 7px 14px #c9c9c9, -7px -7px 14px #ffffff;  
+    backdrop-filter: blur(10px);  
     transition: all 0.3s ease-in-out;
 }
 .glass-card h5 {
