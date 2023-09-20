@@ -103,11 +103,12 @@ body{
 
 header{
     background-color: #121213ec;
+    height: auto;
 }
 
 
 #logo {
-    width:120px;
+    width:110px;
     margin-right: 20px;
     transition: 0.3s ease-in-out;
 }
@@ -128,7 +129,8 @@ header{
     color: white; 
     border-radius: 30px; 
     transition: all 0.3s ease;
-    font-size: 1.15rem;
+    font-size: 1.10rem;
+    margin-right: 15px;
 }
 
 .nav-link.active {
@@ -154,6 +156,41 @@ header{
         font-size: 3.5rem;
     }
 }
+/* Votre CSS existant reste inchangé... */
+
+/* Styles pour centrer les éléments de la liste lorsqu'ils sont en mode collapse */
+@media (max-width: 992px) { 
+    /* Centrer le contenu de la navbar lorsqu'elle est affichée en mode hamburger */
+    #navbarNav {
+        justify-content: center;
+    }
+
+    /* Centrer les éléments de la liste */
+    .navbar-nav {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        text-align: center;
+    }
+
+    /* Centrer les nav-links tout en ajustant leur largeur */
+    .navbar-nav .nav-link {
+        display: inline-block;
+        width: 25vw;
+        text-align: center;
+        margin: auto;
+    }
+
+    /* Si vous souhaitez aussi centrer le bouton de connexion/déconnexion : */
+    .navbar-item-custom {
+        justify-content: center !important;
+        width: 100%;
+    }
+}
+
+
 
 
 

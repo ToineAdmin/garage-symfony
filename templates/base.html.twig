@@ -8,49 +8,56 @@
 		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 		<meta name="generator" content="Hugo 0.112.5">
 
-		<title></title>
+		<title>
+			{% block title %}Accueil - GARAGE V. PARROT
+			{% endblock %}
+		</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 		{{ encore_entry_link_tags('app') }}
+		{{ encore_entry_script_tags('app') }}
 	</head>
 
 	<body>
 		<header class="p-3">
 			<div class="container" data-controller="nav">
-				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-					<a href="{{ path('home')}}" class="d-flex align-items-center mb-2  mb-lg-0 text-white text-decoration-none">
+				<nav class="navbar navbar-expand-lg navbar-dark">
+					<a href="{{ path('home')}}" class="navbar-brand">
 						<img src="{{ asset('build/images/logo.png') }}" alt="logo du garage" id="logo" class="img-fluid"/>
 					</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
 
-					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-						<li>
-							<a href="{{ path('home') }}#services" class="nav-link px-2 text-white">Services</a>
-						</li>
-						<li>
-							<a href="{{ path('occasion') }}" class="nav-link px-2 text-white">Occasions</a>
-						</li>
-						<li>
-							<a href="{{ path('team') }}" class="nav-link px-2 text-white">L'Équipe</a>
-						</li>
-						<li>
-							<a href="{{ path('contact') }}" class="nav-link px-2 text-white">Contact</a>
-						</li>
-					</ul>
-
-					<div class="text-end navbar-item-custom">
-						{% if app.user %}
-							<a href="{{ path('account')}}" class="btn btn-primary">Mon compte
-							</a>
-							<a href="{{ path('app_logout')}}" class="btn btn-danger">Déconnexion</a>
-						{% else %}
-							<a href="{{ path('app_login')}}" class="btn btn-danger">Connexion</a>
-
-						{% endif %}
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a href="{{ path('home') }}#services" class="nav-link px-2">Services</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{ path('occasion') }}" class="nav-link px-2">Occasions</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{ path('team') }}" class="nav-link px-2">L'Équipe</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{ path('contact') }}" class="nav-link px-2">Contact</a>
+							</li>
+						</ul>
+						<div class="d-flex navbar-item-custom">
+							{% if app.user %}
+								<a href="{{ path('account')}}" class="btn btn-primary me-2">Mon compte</a>
+								<a href="{{ path('app_logout')}}" class="btn btn-danger">Déconnexion</a>
+							{% else %}
+								<a href="{{ path('app_login')}}" class="btn btn-danger">Connexion</a>
+							{% endif %}
+						</div>
 					</div>
-				</div>
+				</nav>
 			</div>
 		</header>
+
 
 		{% block content %}
 			<main>
@@ -86,7 +93,7 @@
 						</div>
 						<div class="row w-100">
 							<div class="col-md-12 d-flex justify-content-center mt-5">
-								<a href="#" class="btn btn-danger rdv-btn">Prendre rendez-vous</a>
+								<a href="{{ path('contact') }}" class="btn btn-danger rdv-btn">Prendre rendez-vous</a>
 							</div>
 						</div>
 					</div>
@@ -154,11 +161,11 @@
 											<div class="feedback-content">
 												<p class="feedback-text" data-review-target="feedbackText">
 													{% set words = feedback.comment|split(' ') %}
-													{% if words|length > 20 %}
-														{{ words|slice(0, 20)|join(' ') }}...
+													{% if words|length > 15 %}
+														{{ words|slice(0, 15)|join(' ') }}...
 														<button class="toggle-text" data-action="review#toggleText" data-type="show" data-review-target="showButton">voir plus</button>
 														<span class="more-text" data-review-target="moreText">
-															{{ words|slice(20)|join(' ') }}
+															{{ words|slice(15)|join(' ') }}
 															<button class="toggle-text" data-action="review#toggleText" data-type="hide" data-review-target="toggle">voir moins</button>
 														</span>
 													{% else %}
@@ -240,7 +247,7 @@
 				</div>
 			</div>
 		</footer>
-		{{ encore_entry_script_tags('app') }}
+		
 
 	</body>
 </html></body></html></body></html>
