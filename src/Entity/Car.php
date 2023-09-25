@@ -73,6 +73,12 @@ class Car
         $this->proposals = new ArrayCollection();
     }
 
+    //Permet l'affichage dans ProposalCrudcontroller
+    public function __toString(): string
+    {
+        return $this->getName() . " (#" . $this->getId() . ")";
+    }
+
     public function getId(): ?int
     {
         return $this->id;

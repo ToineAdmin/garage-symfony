@@ -9,6 +9,7 @@ use App\Controller\Admin\CarCrudController;
 use App\Controller\Admin\UserCrudController;
 use App\Entity\Feedback;
 use App\Entity\OpeningHour;
+use App\Entity\Proposal;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -45,6 +46,7 @@ class DashboardController extends AbstractDashboardController
             yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
             yield MenuItem::linkToCrud('Services', 'fas fa-wrench', Service::class);
             yield MenuItem::linkToCrud('Horraire d\'ouverture', 'fas fa-clock', OpeningHour::class);
+            yield MenuItem::linkToCrud('Propostion d\'achat', 'fas fa-dollar', Proposal::class);
         }
     }
 }

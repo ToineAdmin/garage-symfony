@@ -30,6 +30,12 @@ class Proposal
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
+    // Défini le status par défaut
+    public function __construct()
+    {
+        $this->status = 'en attente';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

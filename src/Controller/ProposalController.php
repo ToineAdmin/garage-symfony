@@ -27,6 +27,7 @@ class ProposalController extends AbstractController
     {
 
         $car = $this->em->getRepository(Car::class)->find($carId);
+
         if (!$car) {
             throw $this->createNotFoundException('La voiture demandée n\'existe pas.');
         }
@@ -38,11 +39,15 @@ class ProposalController extends AbstractController
         $form->handleRequest($request);;
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $submittedCarId = $form->get('carId')->getData();
+
+
+            $this->em->persist($proposal);
+            $this->em->flush();
 
 
             $this->addFlash('notice', 'Merci de nous avoir contacté, notre équipe va vous répondre dans les meilleurs délais.');
-            return $this->redirectToRoute('proposal');
+            return $this->redirectToRoute('proposal', ['carId' => $carId]);
+
         }
 
         return $this->render('proposal/index.html.twig', [
