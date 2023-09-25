@@ -65,11 +65,11 @@
 						</table>
 					</div>
 				</div>
-				<button class="btn btn-dark toggle-button" data-action="click->car#toggleDetails" data-car-target="toggleButton" data-details-target-id="{{ loop.index }}">
+				<button class="btn link-style-button toggle-button" data-action="click->car#toggleDetails" data-car-target="toggleButton" data-details-target-id="{{ loop.index }}">
 					Détails
 				</button>
-				<a href="{{ path('information', {'carName': car.name, 'carYear': car.year, 'carPrice': car.price}) }}" class="btn btn-secondary d-block mt-2">Nous contacter</a>
-				<a href="{{ path('proposal', {'carId': car.id}) }}" class="btn btn-success d-block mt-2">Option d'achat</a>
+				<a href="{{ path('information', {'carName': car.name, 'carYear': car.year, 'carPrice': car.price}) }}" class="btn btn-dark d-block mt-2">Nous contacter</a>
+				<a href="{{ path('proposal', {'carId': car.id}) }}" class="btn btn-primary d-block mt-2">Option d'achat</a>
 			</div>
 		</div>
 	{% endfor %}

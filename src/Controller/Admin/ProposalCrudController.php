@@ -106,7 +106,7 @@ class ProposalCrudController extends AbstractCrudController
         }
 
         $email = (new TemplatedEmail())
-            ->from('marlange.toine@gmail.com')
+            ->from('garage-parrot@gmail.com')
             ->to($proposal->getEmail())
             ->subject($subject)
             ->htmlTemplate($template)
