@@ -7,35 +7,36 @@ h1,h2,h3,h4,h5,h6{
 
 
 /* CAR */
-
+#idConteneurResultats{
+    perspective: 1000px;
+}
 .card {
     overflow: hidden;
-    height: 630px;
+    height: 710px;
     min-width: 310px;
     max-width: 22vw;
     padding: 0;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05); /* Ombre portée initiale */
-    transform: perspective(1000px) rotateX(5deg); /* Légère inclinaison pour un effet 3D */
-    transform-origin: center bottom; /* Point d'origine de la transformation */
-    transition: 0.3s ease-out, transform 0.3s ease-out; /* Ajout de la transition pour transform */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05); 
+    transform-origin: center bottom; 
+    transition: 0.3s ease-out, transform 0.3s ease-out;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: 0.3s ease-out;
+    transform: scale(1) translateZ(0);
+    transition: 0.1s ease-out;
 }
 
 
 .card:hover {
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 3px 5px rgba(0, 0, 0, 0.1); /* Ombre portée plus prononcée lors du survol */
-    transform: perspective(1000px) rotateX(0deg); /* Redresse la carte pour la mettre à plat lors du survol */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 3px 5px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.03) translateZ(0);
 }
 
 
 @media(max-width: 992px){
     .card, .card:hover {
-        box-shadow: none; /* Annule l'ombre portée */
-        transform: none; /* Annule la transformation */
+        box-shadow: none; 
+        transform: none; 
         max-width: 50vw;
         border: 1px solid rgba(0, 0, 0, 0.192);
     }
@@ -59,7 +60,7 @@ h1,h2,h3,h4,h5,h6{
 .badge-price {
     padding: 10px 20px;
     font-size: 1.15rem; 
-    border-radius: 50px;  /* rend les badges plus arrondis */
+    border-radius: 50px; 
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -72,7 +73,7 @@ h1,h2,h3,h4,h5,h6{
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-top-left-radius: 10px;  /* arrondit les coins supérieurs */
+    border-top-left-radius: 10px;  
     border-top-right-radius: 10px;
 }
 
@@ -347,7 +348,6 @@ header{
 
 /* QUI SOMMES NOUS */
 
-/* Stylesheet pour votre front */
 .img-container {
     transition: transform 0.3s ease-in-out; 
 }

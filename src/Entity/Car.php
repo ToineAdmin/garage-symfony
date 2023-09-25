@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Entity\Trait\CreatedAtTrait;
 use App\Repository\CarRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -62,6 +64,14 @@ class Car
         notInRangeMessage: 'Vous devez entrer une année entre {{ min }} et {{ max }}',
     )]
     private ?int $year = null;
+
+    #[ORM\OneToMany(mappedBy: 'car', targetEntity: Proposal::class)]
+    private Collection $proposals;
+
+    public function __construct()
+    {
+        $this->proposals = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -210,6 +220,36 @@ class Car
     public function setFuel(string $fuel): static
     {
         $this->fuel = $fuel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Proposal>
+     */
+    public function getProposals(): Collection
+    {
+        return $this->proposals;
+    }
+
+    public function addProposal(Proposal $proposal): static
+    {
+        if (!$this->proposals->contains($proposal)) {
+            $this->proposals->add($proposal);
+            $proposal->setCar($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposal(Proposal $proposal): static
+    {
+        if ($this->proposals->removeElement($proposal)) {
+            // set the owning side to null (unless already changed)
+            if ($proposal->getCar() === $this) {
+                $proposal->setCar(null);
+            }
+        }
 
         return $this;
     }
