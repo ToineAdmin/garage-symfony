@@ -69,7 +69,7 @@
 					Détails
 				</button>
 				<a href="{{ path('information', {'carName': car.name, 'carYear': car.year, 'carPrice': car.price}) }}" class="btn btn-secondary d-block mt-2">Nous contacter</a>
-				<a href="#" class="btn btn-success d-block mt-2">Option d'achat</a>
+				<a href="{{ path('proposal', {'carId': car.id}) }}" class="btn btn-success d-block mt-2">Option d'achat</a>
 			</div>
 		</div>
 	{% endfor %}
