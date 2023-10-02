@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable - Garage V.PARROT
+{% endblock %}
+
+{% block content %}
+	<div class="container error-container">
+        <h3> Page introuvable </h3>
+        <p>Désolé, cette page ne semble pas accessible pour l'instant.</p>
+        <a href="{{ path('home') }}" class="btn btn-info">Revenir à l'accueil </a>
+	</div>
+{% endblock %}
