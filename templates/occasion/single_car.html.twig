@@ -24,8 +24,10 @@
 					{{ car.brand }}</p>
 				<p class="card-text text-light-bold">{{ car.fuel }}</p>
 				<p class="card-text badge badge-price text-bg-warning">{{ (car.price / 100)|number_format(0, '.', ' ') }}€</p>
-				<p class="card-text text-light-bold">Année: {{ car.year }}</p>
-				<p class="card-text text-light-bold">{{ (car.miles|number_format(0, '.', ' ')) }} km</p>
+				<p class="card-text text-light-bold">Année:
+					{{ car.year }}</p>
+				<p class="card-text text-light-bold">{{ (car.miles|number_format(0, '.', ' ')) }}
+					km</p>
 				<div class="details" data-car-target="details" data-details-target-id="{{ loop.index }}" style="display: none;">
 					<div class="table-container">
 						<table class="table">
@@ -63,10 +65,11 @@
 						</table>
 					</div>
 				</div>
-				<button class="btn btn-dark toggle-button" data-action="click->car#toggleDetails" data-car-target="toggleButton" data-details-target-id="{{ loop.index }}">
+				<button class="btn link-style-button toggle-button" data-action="click->car#toggleDetails" data-car-target="toggleButton" data-details-target-id="{{ loop.index }}">
 					Détails
 				</button>
-				<a href="{{ path('information', {'carName': car.name, 'carYear': car.year, 'carPrice': car.price}) }}" class="btn btn-secondary toggle-button">Nous contacter</a>
+				<a href="{{ path('information', {'carName': car.name, 'carYear': car.year, 'carPrice': car.price}) }}" class="btn btn-dark d-block mt-2">Nous contacter</a>
+				<a href="{{ path('proposal', {'carId': car.id}) }}" class="btn btn-primary d-block mt-2">Faire une proposition</a>
 			</div>
 		</div>
 	{% endfor %}

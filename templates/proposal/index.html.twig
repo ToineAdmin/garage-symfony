@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proposition d'achat - GARAGE V. PARROT
+{% endblock %}
+{% block content %}
+	<div class="container form-container">
+		<div class="form-panel">
+			<h5 class="text-center mb-4"> Proposition de prix </h5>
+			{% for message in app.flashes('notice') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+            
+			{{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+			<div class="form-group">
+				{{ form_label(form.email, null, {'label_attr': {'class': 'form-label'}}) }}
+				{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.proposedPrice, null, {'label_attr': {'class': 'form-label'}}) }}
+				{{ form_widget(form.proposedPrice, {'attr': {'class': 'form-control'}}) }}
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.comment, null, {'label_attr': {'class': 'form-label'}}) }}
+				{{ form_widget(form.comment, {'attr': {'class': 'form-control'}}) }}
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.carName, null, {'label_attr': {'class': 'form-label'}}) }}
+				{{ form_widget(form.carName, {'attr': {'class': 'form-control'}}) }}
+			</div>
+
+			<div class="form-group text-center mt-3">
+				<button type="submit" class="btn btn-primary">Envoyer</button>
+			</div>
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}
